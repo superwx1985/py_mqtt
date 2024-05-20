@@ -1,5 +1,4 @@
 import time
-from queue import Queue
 from log import get_logger
 import paho.mqtt.client as mqtt
 
@@ -9,13 +8,11 @@ logger = get_logger(__name__)
 
 class MQTTClient:
 
-    def __init__(self, host, port, qos, heartbeat, client_id, username="", password=""):
+    def __init__(self, host, port, keepalive, username="", password="", client_id=""):
         self.host = host
         self.port = port
-        self.qos = qos
-        self.queue = Queue()
         self.mqtt_client_id = client_id
-        self.heartbeat = heartbeat
+        self.keepalive = keepalive
         self.username = username
         self.password = password
         self.client = None
@@ -53,8 +50,8 @@ class MQTTClient:
             print(f"Broker replied with failure: {reason_code_list[0]}")
         client.disconnect()
 
-    def subscribe(self, topic):
-        self.client.subscribe(topic, self.qos)
+    def subscribe(self, topic, qos=0):
+        self.client.subscribe(topic, qos)
         logger.info('subscribe the topic: %s' % topic)
 
     def unsubscribe(self, topic):
@@ -75,7 +72,6 @@ class MQTTClient:
         logger.info('public topic: %s ' % msg)
         pass
 
-
     def start(self):
         if self.client is None:
             self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=self.mqtt_client_id)
@@ -84,10 +80,8 @@ class MQTTClient:
             self.client.on_subscribe = self.on_subscribe
             self.client.on_unsubscribe = self.on_unsubscribe
             self.client.username_pw_set(self.username, self.password)
-            self.client.connect(self.host, self.port, self.heartbeat)
+            self.client.connect(self.host, self.port, self.keepalive)
             logger.info("client('%s') is connected" % self.mqtt_client_id)
-            self.client.subscribe("vic_test/20240517")
-            self.client.publish(topic="vic_test/20240517", payload="pycharm")
             self.client.loop_start()
         else:
             logger.error("mqtt_client object is None")
@@ -103,11 +97,12 @@ class MQTTClient:
 if __name__ == '__main__':
     host = "mqtt.eclipseprojects.io"
     port = 1883
-    client_id = "test1"
+    keepalive = 60
     username = ""
     password = ""
+    client_id = "test1"
 
-    user_client = MQTTClient(host, port, 0, 60, client_id, username, password)
+    user_client = MQTTClient(host, port, keepalive, username, password, client_id)
     user_client.start()
     for i in range(5):
         print(i)

@@ -1,3 +1,5 @@
+import struct
+
 import paho.mqtt.client as mqtt
 
 
@@ -16,7 +18,11 @@ mqttc.connect("mqtt.eclipseprojects.io", 1883, 60)
 topic = "vic_test/20240517"
 payload = "Hello, MQTT!"
 mqttc.publish(topic, payload)
-
+# 16 进制字符串
+hex_payload = "00030000"
+# 转换为 bytes 对象
+payload = bytes.fromhex(hex_payload)
+mqttc.publish(topic, payload)
 print("Message published to topic:", topic)
 
 mqttc.disconnect()
