@@ -48,7 +48,7 @@ class MyApp(tk.Tk):
 
         # 创建主窗口
         self.title("GLOBE Vehicle Error Code Sender")
-        # root.geometry("400x200")
+        # self.geometry("400x200")
 
         left_frame = tk.Frame(self, width=300)
         left_frame.grid(row=0, column=0, sticky="nsew")
@@ -56,16 +56,26 @@ class MyApp(tk.Tk):
         right_frame = tk.Frame(self, width=400)
         right_frame.grid(row=0, column=1, sticky="nsew")
 
-        # 创建前两个输入框
-        entries1 = dict()
         i = 0
-        for k, v in {"Device ID": {"default": "1144502349"}, "Model": {"default": "CZ60R24X"}}.items():
-            entries1[k] = create_label_entry_pair(left_frame, k, v["default"], i, 0)
-            i += 1
+        # 创建环境下拉框
+        label = tk.Label(left_frame, text="环境")
+        label.grid(row=i, column=0, padx=5, pady=5, sticky='e')
+        self.combo = ttk.Combobox(left_frame, state="readonly")
+        self.combo['values'] = ('DEV6', 'DEV9',)
+        self.combo.current(0)
+        self.combo.grid(row=i, column=1, padx=5, pady=5, sticky='e')
 
         # 连接状态标签
         self.status_label = tk.Label(left_frame, text="Disconnected", bg="red", fg="white")
-        self.status_label.grid(row=0, column=2, pady=10)
+        self.status_label.grid(row=i, column=2, pady=10)
+
+        i += 1
+
+        # 创建前两个输入框
+        entries1 = dict()
+        for k, v in {"Device ID": {"default": "1144502349"}, "Model": {"default": "CZ60R24X"}}.items():
+            entries1[k] = create_label_entry_pair(left_frame, k, v["default"], i, 0)
+            i += 1
 
         # 创建分割线
         create_separator(left_frame, i, 4)
@@ -83,6 +93,7 @@ class MyApp(tk.Tk):
                      5: {"code": "MR", "name": "Right blade motor controller"},
                      217: {"code": "MRS", "name": "Second right blade motor controller"},
                      216: {"code": "AT", "name": "Attachment controller"},
+                     174: {"code": "?", "name": "Vehicle error code"},
                      }
         for k, v in error_map.items():
             entries2[k] = create_label_entry_button(left_frame, f"{k} | {v['code']} | {v['name']}", 0, i, 0, k)
@@ -120,8 +131,14 @@ class MyApp(tk.Tk):
         buttons_frame.grid(row=1, column=0, columnspan=4, pady=20)
 
         def connect():
+            broker = {
+                "DEV6": {"host": "cantonrlmudp.globetools.com", "port": 1883, "username": "163e82bac7ca1f41163e82bac7ca9001", "password": "47919B30B9A23BA33DBB5FA976E99BA2"},
+                "DEV9": {"host": "dev9-xlink-mqtt.globe-groups.com", "port": 1883, "username": "163e82ca81421f41163e82ca81427001", "password": "c94d6dd9dc9efe1016e78cfddb519210"},
+            }
             if self.xlink_vehicle is None:
-                self.xlink_vehicle = xlinkVehicle(entries1["Device ID"].get(), entries1["Model"].get(), self.logger)
+                env_id = self.combo.get()
+                self.xlink_vehicle = xlinkVehicle(broker[env_id]["host"], broker[env_id]["port"], broker[env_id]["username"], broker[env_id]["password"],
+                                                  entries1["Device ID"].get(), entries1["Model"].get(), self.logger)
                 self.xlink_vehicle.connect_to_xlink()
 
         def disconnect():

@@ -4,16 +4,16 @@ from vehicle_payload import PayloadData, VehiclePayload
 
 
 class xlinkVehicle:
-    def __init__(self, device_id, model, logger=None):
+    def __init__(self, host, port, username, password, device_id, model, logger=None):
         if logger:
             self.logger = logger
         self.client_id = "X:DEVICE;A:2;V:1;"
-        self.host = "cantonrlmudp.globetools.com"
+        self.host = host
         # self.host = "mqtt.eclipseprojects.io"
-        self.port = 1883
+        self.port = port
         self.keepalive = 20
-        self.username = "163e82bac7ca1f41163e82bac7ca9001"
-        self.password = "47919B30B9A23BA33DBB5FA976E99BA2"
+        self.username = username
+        self.password = password
         self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=self.client_id, protocol=mqtt.MQTTv311)
         self.device_id = device_id
         self.model = model
@@ -45,18 +45,18 @@ class xlinkVehicle:
             self.logger.info(f"Client [{self.client_id}] is connected to {self.host}:{self.port}")
 
             self.client.publish(f"$3/{self.device_id}", PayloadData.hex_string_to_byte("00030000"), 1)
-            self.client.subscribe(f"$4/{self.device_id}", 1)
-            self.client.publish(f"$4/{self.device_id}", PayloadData.hex_string_to_byte("0004000100"), 0)
-            self.client.subscribe(f"$7/{self.device_id}", 1)
-            self.client.subscribe(f"$9/{self.device_id}", 1)
-            self.client.subscribe(f"$c/{self.device_id}", 1)
-            self.client.subscribe(f"$h/{self.device_id}", 1)
-            self.client.subscribe(f"$l/{self.device_id}", 1)
-            self.client.publish(f"$j/{self.device_id}", PayloadData.hex_string_to_byte("0013000108"), 1)
-            self.client.subscribe(f"$e", 1)
-            self.client.publish(f"$6/{self.device_id}", VehiclePayload(105, "9", f"{self.model}").get_byte(), 1)
-            for i in [104, 211, 1, 2, 3, 215, 4, 5, 217, 216]:
-                self.client.publish(f"$6/{self.device_id}", VehiclePayload(i, "0", "0").get_byte(), 1)
+            # self.client.subscribe(f"$4/{self.device_id}", 1)
+            # self.client.publish(f"$4/{self.device_id}", PayloadData.hex_string_to_byte("0004000100"), 0)
+            # self.client.subscribe(f"$7/{self.device_id}", 1)
+            # self.client.subscribe(f"$9/{self.device_id}", 1)
+            # self.client.subscribe(f"$c/{self.device_id}", 1)
+            # self.client.subscribe(f"$h/{self.device_id}", 1)
+            # self.client.subscribe(f"$l/{self.device_id}", 1)
+            # self.client.publish(f"$j/{self.device_id}", PayloadData.hex_string_to_byte("0013000108"), 1)
+            # self.client.subscribe(f"$e", 1)
+            # self.client.publish(f"$6/{self.device_id}", VehiclePayload(105, "9", f"{self.model}").get_byte(), 1)
+            # for i in [104, 211, 1, 2, 3, 215, 4, 5, 217, 216]:
+            #     self.client.publish(f"$6/{self.device_id}", VehiclePayload(i, "0", "0").get_byte(), 1)
             self.client.loop_start()
         except Exception as e:
             self.logger.error(f"Cannot connect to MQTT broker: {e}")
@@ -84,6 +84,10 @@ class xlinkVehicle:
 
 
 if __name__ == "__main__":
+    host = "cantonrlmudp.globetools.com"
+    port = 1833
+    username = "163e82bac7ca1f41163e82bac7ca9001"
+    password = "47919B30B9A23BA33DBB5FA976E99BA2"
     device_id = "1144502349"
     model = "CZ60R24X"
     client = xlinkVehicle(device_id, model)
