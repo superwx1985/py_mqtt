@@ -1,4 +1,7 @@
 import binascii
+import struct
+
+from mqtt_client import MQTTClient
 
 
 class VehiclePayload:
@@ -36,7 +39,13 @@ class VehiclePayload:
 class PayloadData:
     type_map = {"0": "Byte", "1": "Int16", "2": "Unsigned Int16", "3": "Int32",
                 "4": "Unsigned Int32", "5": "Int64", "6": "Unsigned Int64", "7": "Float",
-                "8": "Double", "9": "String", "A": "Binary"}
+                "8": "Double", "9": "String", "A": "Binary", "b": "Boolean"}
+
+    @classmethod
+    def int_to_1byte(cls, n):
+        if n < 0 or n > 255:
+            raise ValueError("The value exceeds the 1-byte range")
+        return n.to_bytes(1, byteorder='big')
 
     @classmethod
     def string_to_hex_ascii(cls, s):
@@ -48,24 +57,84 @@ class PayloadData:
         # 转换为 bytes 对象
         return bytes.fromhex(s)
 
+    @classmethod
+    def int_to_hex16(cls, n):
+        # 确保数值在16位范围内
+        if n < -32768 or n > 32767:
+            raise ValueError("The value exceeds the range of a 16-bit integer")
+        # 将数值转换为16位无符号整数
+        n &= 0xFFFF
+        # 将其转换为16进制字符串，并保证长度为4（不足时左补0）
+        hex_string = f"{n:04x}"
+        return hex_string
+
+    @classmethod
+    def int_to_hex32(cls, n):
+        # 确保数值在32位范围内
+        if n < -2**31 or n > 2**31-1:
+            raise ValueError("The value exceeds the range of a 32-bit integer")
+        # 将数值转换为32位无符号整数
+        n &= 0xFFFFFFFF
+        # 将其转换为32进制字符串，并保证长度为8（不足时左补0）
+        hex_string = f"{n:08x}"
+        return hex_string
+
+    @classmethod
+    def float_to_hex(cls, f):
+        # 使用 struct.pack 将浮点数打包为二进制数据（32位单精度浮点数）
+        packed = struct.pack('>f', f)
+
+        # 使用 struct.unpack 将二进制数据解包为整数
+        unpacked = struct.unpack('>I', packed)[0]
+
+        # 将整数转换为16进制字符串，并保证长度为8（不足时左补0）
+        hex_string = f"{unpacked:08x}"
+
+        return hex_string
+
     def __init__(self, index, _type, value):
-        self.index = index
+        self.index = int(index)
         self.type = _type
         self.length = 0
         self.value = value
 
     def get_byte(self):
-        index_byte = self.index.to_bytes((self.index.bit_length() + 7) // 8, 'big')
+        index_byte = self.int_to_1byte(self.index)
         value_byte = b''
-        if self.type in self.type_map:
-            _type = self.type_map[self.type]
-            if "Byte" == _type:
-                # 补齐到一个字节
-                value_byte = binascii.unhexlify(self.value.zfill(2))
-            elif "String" == _type:
-                value_byte = bytes(self.value, 'ascii')
+        _type_index = str(self.type)
+        if _type_index in self.type_map:
+            # _type = self.type_map[_type_index]
+            if _type_index in ("0", "b"):  # Byte
+                if self.value is True or "true" == self.value.lower():
+                    value = "1"
+                elif self.value is False or "false" == self.value.lower():
+                    value = "0"
+                else:
+                    value = str(self.value)
+                # 补齐到1个字节
+                if len(value) % 2 != 0:
+                    value = '0' + value
+                value_byte = binascii.unhexlify(value)
+            elif "1" == _type_index:  # Int16
+                value = self.int_to_hex16(int(self.value))
+                value_byte = binascii.unhexlify(value)
+            elif "2" == _type_index:  # Unsigned Int16
+                value_byte = binascii.unhexlify(format(int(self.value), 'x').zfill(4))
+            elif "3" == _type_index:  # Int32
+                value = self.int_to_hex32(int(self.value))
+                value_byte = binascii.unhexlify(value)
+            elif "4" == _type_index:  # Unsigned Int32
+                # 补齐到4个字节
+                value_byte = binascii.unhexlify(format(int(self.value), 'x').zfill(8))
+            elif "7" == _type_index:  # Float
+                value = self.float_to_hex(float(self.value))
+                value_byte = binascii.unhexlify(value)
+            elif "9" == _type_index:  # String
+                value_byte = bytes(str(self.value), 'ascii')
+            else:
+                raise ValueError(f"Payload type [{self.type_map[_type_index]}] has not been implemented")
         else:
-            raise ValueError("Invalid payload type")
+            raise ValueError(f"Invalid payload type [{_type_index}]")
 
         # 将value长度数转换为十六进制字符串
         length_hex_string = hex(len(value_byte))[2:]
@@ -77,7 +146,10 @@ class PayloadData:
 
 
 if __name__ == "__main__":
-    pd = PayloadData(105, '9', 'RZ42M82')
+    _index = 0
+    _type = 0
+    _value = '100'
+    pd = PayloadData(_index, _type, _value)
     print(pd.get_byte().hex())
-    vp = VehiclePayload(105, '9', 'RZ42M82')
+    vp = VehiclePayload(_index, _type, _value)
     print(vp.get_byte().hex())
