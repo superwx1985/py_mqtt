@@ -4,7 +4,7 @@ import tkinter as tk
 import logging
 from tkinter import ttk
 from tkinter import scrolledtext
-from xlink_vehicle import xlinkVehicle
+from xlink_vehicle import XlinkVehicle
 from vehicle_payload import PayloadData
 
 
@@ -76,7 +76,7 @@ class MyApp(tk.Tk):
             }
             if self.xlink_vehicle is None:
                 env_id = self.env_combo.get()
-                self.xlink_vehicle = xlinkVehicle(broker[env_id]["host"], broker[env_id]["port"],
+                self.xlink_vehicle = XlinkVehicle(broker[env_id]["host"], broker[env_id]["port"],
                                                   broker[env_id]["username"], broker[env_id]["password"],
                                                   entries1["Device ID"].get(), entries1["Model"].get(), self.logger)
                 self.xlink_vehicle.connect_to_xlink()
