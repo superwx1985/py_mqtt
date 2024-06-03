@@ -17,6 +17,7 @@ class MyApp(tk.Tk):
         self.logger.setLevel(logging.DEBUG)
         self.connect_active_button = []
         self.running_mock_cutting = False
+        self.switchs_statue = False
 
         def async_call(func, *args, **kwargs):
             t = threading.Thread(target=func, args=args, kwargs=kwargs)
@@ -170,7 +171,7 @@ class MyApp(tk.Tk):
         def set_custom_datapoint(key, data_type, value, is_hex):
             try:
                 if self.xlink_vehicle is not None and self.xlink_vehicle.is_connected():
-                    if is_hex is False and data_type not in ("9", "A","b"):
+                    if is_hex is False and data_type not in ("9", "A", "b"):
                         value = self.decimal_to_hex(value)
                     self.xlink_vehicle.publish_datapoint_to_xlink(key, data_type, value)
             except Exception as e:
@@ -261,20 +262,28 @@ class MyApp(tk.Tk):
                 self.xlink_vehicle.mock_cutting()
                 self.running_mock_cutting = False
 
+        def toggle_switch():
+            if self.xlink_vehicle is not None and self.xlink_vehicle.is_connected():
+                self.xlink_vehicle.toggle_switch(not self.switchs_statue)
+                self.switchs_statue = not self.switchs_statue
+
         left_buttons_frame = tk.Frame(left_frame)
         left_buttons_frame.grid(row=i, column=0, columnspan=4)
 
         self.clean_error_button = tk.Button(left_buttons_frame, text="Clean Error", command=clean_error)
-        self.clean_error_button.grid(row=0, column=1, padx=5)
+        self.clean_error_button.grid(row=0, column=0, padx=5)
         self.connect_active_button.append(self.clean_error_button)
 
         self.set_all_button = tk.Button(left_buttons_frame, text="Set All", command=lambda: async_call(set_all))
-        self.set_all_button.grid(row=0, column=2, padx=5)
+        self.set_all_button.grid(row=0, column=1, padx=5)
         self.connect_active_button.append(self.set_all_button)
 
         self.mock_cutting_button = tk.Button(left_buttons_frame, text="Mock Cutting", command=lambda: async_call(mock_cutting))
-        self.mock_cutting_button.grid(row=0, column=3, padx=5)
-        # self.connect_active_button.append(self.mock_cutting_button)
+        self.mock_cutting_button.grid(row=0, column=2, padx=5)
+
+        self.toggle_switch_button = tk.Button(left_buttons_frame, text="Toggle Switch", command=lambda: async_call(toggle_switch))
+        self.toggle_switch_button.grid(row=0, column=3, padx=5)
+        self.connect_active_button.append(self.toggle_switch_button)
         i += 1
 
         # 创建一个 ScrolledText 小部件用于显示日志

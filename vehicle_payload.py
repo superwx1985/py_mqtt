@@ -105,6 +105,7 @@ class PayloadData:
         if _type_index in self.type_map:
             # _type = self.type_map[_type_index]
             if _type_index in ("0", "b"):  # Byte
+                self.type = "0"  # Boolean传输时实际是Byte
                 if self.value is True or "true" == self.value.lower():
                     value = "1"
                 elif self.value is False or "false" == self.value.lower():
@@ -116,16 +117,16 @@ class PayloadData:
                     value = '0' + value
                 value_byte = binascii.unhexlify(value)
             elif "1" == _type_index:  # Int16
-                value = self.int_to_hex16(int(self.value))
+                value = self.int_to_hex16(int(self.value, 16))
                 value_byte = binascii.unhexlify(value)
             elif "2" == _type_index:  # Unsigned Int16
-                value_byte = binascii.unhexlify(format(int(self.value), 'x').zfill(4))
+                value_byte = binascii.unhexlify(format(int(self.value, 16), 'x').zfill(4))
             elif "3" == _type_index:  # Int32
                 value = self.int_to_hex32(int(self.value))
                 value_byte = binascii.unhexlify(value)
             elif "4" == _type_index:  # Unsigned Int32
                 # 补齐到4个字节
-                value_byte = binascii.unhexlify(format(int(self.value), 'x').zfill(8))
+                value_byte = binascii.unhexlify(format(int(self.value, 16), 'x').zfill(8))
             elif "7" == _type_index:  # Float
                 value = self.float_to_hex(float(self.value))
                 value_byte = binascii.unhexlify(value)

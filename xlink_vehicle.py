@@ -1,4 +1,6 @@
 import paho.mqtt.client as mqtt
+import logging
+from datetime import datetime
 import time
 from vehicle_payload import PayloadData, VehiclePayload
 
@@ -58,10 +60,10 @@ class XlinkVehicle:
             self.client.on_publish = self.on_publish
             self.client.connect(self.host, self.port, self.keepalive)
             self.logger.info(f"Client [{self.client_id}] is connected to {self.host}:{self.port}")
-
             self.client.publish(f"$3/{self.device_id}", PayloadData.hex_string_to_byte("00030000"), 1)
+            self.client.publish(f"$4/{self.device_id}", PayloadData.hex_string_to_byte("0004000100"), 0)
+            self.publish_datapoint_to_xlink(105, "9", self.model)
             # self.client.subscribe(f"$4/{self.device_id}", 1)
-            # self.client.publish(f"$4/{self.device_id}", PayloadData.hex_string_to_byte("0004000100"), 0)
             # self.client.subscribe(f"$7/{self.device_id}", 1)
             # self.client.subscribe(f"$9/{self.device_id}", 1)
             # self.client.subscribe(f"$c/{self.device_id}", 1)
@@ -69,10 +71,10 @@ class XlinkVehicle:
             # self.client.subscribe(f"$l/{self.device_id}", 1)
             # self.client.publish(f"$j/{self.device_id}", PayloadData.hex_string_to_byte("0013000108"), 1)
             # self.client.subscribe(f"$e", 1)
-            # self.client.publish(f"$6/{self.device_id}", VehiclePayload(105, "9", f"{self.model}").get_byte(), 1)
+
             # for i in [104, 211, 1, 2, 3, 215, 4, 5, 217, 216]:
             #     self.client.publish(f"$6/{self.device_id}", VehiclePayload(i, "0", "0").get_byte(), 1)
-            self.publish_datapoint_to_xlink(0, "0", "63")
+            self.publish_datapoint_to_xlink(0, "0", "62")
             self.client.loop_start()
         except Exception as e:
             self.logger.error(f"Cannot connect to MQTT broker: {e}")
@@ -102,15 +104,48 @@ class XlinkVehicle:
         #     value = str(value)
         self.publish_datapoint_to_xlink(index, 0, value)
 
+    def toggle_switch(self, status=True):
+        """
+        A3S-VehiclesGeneralInfo-135
+        DP 6
+        a. Park status (Byte0 Bit0=0 -> Not parking | Byte0 Bit0=1 -> Parking)
+        b. Seat status (Byte0 Bit1=0 -> No seated | Byte0 Bit1=1 -> On seat)
+        c. Drive status (Byte0 Bit2=0 -> Stop | Byte0 Bit2=1 -> Running)
+        d. Blade status (Byte0 Bit3=0 -> Stop | Byte0 Bit3=1 -> Running)
+        DP 214
+        e. ETO status  from DP214, 0: off,1: on
+        for G20 gen2
+        -Bit 0: 0 -> front ETO off, 1 -> front ETO on
+        -Bit 1: 0 -> rear ETO off, 1 -> rear ETO on
+        DP 106
+        power 1 -> on, 0 -> off
+        """
+        if status:
+            self.publish_datapoint_to_xlink(6, 0, "0F")
+            self.publish_datapoint_to_xlink(214, 0, "01")
+            self.publish_datapoint_to_xlink(106, 0, "01")
+        else:
+            self.publish_datapoint_to_xlink(6, 0, "00")
+            self.publish_datapoint_to_xlink(214, 0, "00")
+            self.publish_datapoint_to_xlink(106, 0, "00")
+
     def mock_cutting(self):
         # Fleet-ProductDetail-009
+        # 0
+        self.publish_datapoint_to_xlink(7, 1, 1000)
+        self.publish_datapoint_to_xlink(11, 1, 1000)
+        self.publish_datapoint_to_xlink(18, 1, 0)
+        self.publish_datapoint_to_xlink(24, 1, 0)
+        self.publish_datapoint_to_xlink(28, 1, 0)
+        self.wait(10)
+
         # 1
         self.publish_datapoint_to_xlink(7, 1, 1000)
         self.publish_datapoint_to_xlink(11, 1, 1000)
         self.publish_datapoint_to_xlink(18, 1, 2000)
         self.publish_datapoint_to_xlink(24, 1, 2000)
         self.publish_datapoint_to_xlink(28, 1, 2000)
-        session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+        session_id = datetime.now().strftime("%Y%m%d%H%M%S")
         self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7128, -74.0060, {datetime.now().strftime("%Y%m%d%H%M%S")}")
         self.publish_datapoint_to_xlink(218, 9, f"{session_id},200,2,3,1")
         self.wait(60)
@@ -129,32 +164,32 @@ class XlinkVehicle:
         self.wait(10)
 
         #4
-        self.publish_datapoint_to_xlink(7, 1, 0)
-        self.publish_datapoint_to_xlink(11, 1, 0)
-        self.wait(10)
-
-        # 5
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7328, -74.0160, {datetime.now().strftime("%Y%m%d%H%M%S")}")
-        self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,4,4,1")
-        self.wait(10)
-
-        # 6
-        self.wait(60)
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7328, -74.0260, {datetime.now().strftime("%Y%m%d%H%M%S")}")
-        self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,15,4,0")
-        self.wait(10)
-
-        # 9
-        self.publish_datapoint_to_xlink(7, 1, 1000)
-        self.publish_datapoint_to_xlink(11, 1, 1000)
-        self.publish_datapoint_to_xlink(18, 1, 2000)
-        self.publish_datapoint_to_xlink(24, 1, 2000)
-        self.publish_datapoint_to_xlink(28, 1, 2000)
-        session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7428, -74.0260, {datetime.now().strftime("%Y%m%d%H%M%S")}")
-        self.publish_datapoint_to_xlink(218, 9, f"{session_id},150,1,3,1")
-        self.wait(10)
-        pass
+        # self.publish_datapoint_to_xlink(7, 1, 0)
+        # self.publish_datapoint_to_xlink(11, 1, 0)
+        # self.wait(10)
+        #
+        # # 5
+        # self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7328, -74.0160, {datetime.now().strftime("%Y%m%d%H%M%S")}")
+        # self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,4,4,1")
+        # self.wait(10)
+        #
+        # # 6
+        # self.wait(60)
+        # self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7328, -74.0260, {datetime.now().strftime("%Y%m%d%H%M%S")}")
+        # self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,15,4,0")
+        # self.wait(10)
+        #
+        # # 9
+        # self.publish_datapoint_to_xlink(7, 1, 1000)
+        # self.publish_datapoint_to_xlink(11, 1, 1000)
+        # self.publish_datapoint_to_xlink(18, 1, 2000)
+        # self.publish_datapoint_to_xlink(24, 1, 2000)
+        # self.publish_datapoint_to_xlink(28, 1, 2000)
+        # session_id = datetime.now().strftime("%Y%m%d%H%M%S")
+        # self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7428, -74.0260, {datetime.now().strftime("%Y%m%d%H%M%S")}")
+        # self.publish_datapoint_to_xlink(218, 9, f"{session_id},150,1,3,1")
+        # self.wait(10)
+        # pass
 
 
 if __name__ == "__main__":
