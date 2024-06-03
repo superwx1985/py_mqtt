@@ -15,3 +15,4 @@ build/
 /screenshot/*
 debug.py
 *.spec
+/v1.json

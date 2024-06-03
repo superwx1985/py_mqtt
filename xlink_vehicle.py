@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 import time
+import logging
 from vehicle_payload import PayloadData, VehiclePayload
 
 
@@ -7,6 +8,8 @@ class xlinkVehicle:
     def __init__(self, host, port, username, password, device_id, model, logger=None):
         if logger:
             self.logger = logger
+        else:
+            self.logger = logging.getLogger('xlinkVehicle')
         self.client_id = "X:DEVICE;A:2;V:1;"
         self.host = host
         # self.host = "mqtt.eclipseprojects.io"
@@ -85,12 +88,12 @@ class xlinkVehicle:
 
 if __name__ == "__main__":
     host = "cantonrlmudp.globetools.com"
-    port = 1833
+    port = 1883
     username = "163e82bac7ca1f41163e82bac7ca9001"
     password = "47919B30B9A23BA33DBB5FA976E99BA2"
     device_id = "1144502349"
     model = "CZ60R24X"
-    client = xlinkVehicle(device_id, model)
+    client = xlinkVehicle(host, port, username, password, device_id, model)
     client.connect_to_xlink()
     client.publish_error_to_xlink(104, "11")
     for i in range(10):
