@@ -34,23 +34,28 @@ class MyApp(tk.Tk):
 
             return entry
 
-        def set_error(key, value):
+        def set_error(key, value, is_hex):
             if self.xlink_vehicle is not None and self.xlink_vehicle.is_connected():
-                self.xlink_vehicle.publish_error_to_xlink(key, value)
+                self.xlink_vehicle.publish_error_to_xlink(key, value, is_hex)
 
         def create_separator(root, row, columnspan):
             separator = ttk.Separator(root, orient='horizontal')
             separator.grid(row=row, column=0, columnspan=columnspan, sticky='ew', pady=2)
 
         # 创建主窗口
-        self.title("GLOBE Vehicle Error Code Sender")
+        self.title("GLOBE Vehicle DP Sender")
         # self.geometry("400x200")
 
-        left_frame = tk.Frame(self, width=300)
+        left_frame = tk.Frame(self)
         left_frame.grid(row=0, column=0, sticky="nsew")
 
-        right_frame = tk.Frame(self, width=400)
+        right_frame = tk.Frame(self)
         right_frame.grid(row=0, column=1, sticky="nsew")
+
+        # 配置行和列，使其随窗口大小调整
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=0)  # 左框架不自适应大小
+        self.grid_columnconfigure(1, weight=1)
 
         i = 0
         # 创建包含连接状态和环境标签的frame
@@ -66,6 +71,7 @@ class MyApp(tk.Tk):
         self.env_combo.grid(row=i, column=2, padx=2, pady=2, sticky='w')
 
         connect_row = i
+
         def connect():
             broker = {
                 "DEV6": {"host": "cantonrlmudp.globetools.com", "port": 1883,
@@ -126,7 +132,7 @@ class MyApp(tk.Tk):
         label.grid(row=i, column=3, padx=2, pady=2, sticky='w')
         i += 1
 
-        # 创建后面8个输入框
+        # 创建error输入框
         def create_label_entry_button(root, index_text, label_text, default, row, column, key):
             label = tk.Label(root, text=label_text)
             label.grid(row=row, column=column, padx=2, pady=2, sticky='w')
@@ -142,7 +148,7 @@ class MyApp(tk.Tk):
             checkbox = tk.Checkbutton(root, text="", variable=checkbox_var)
             checkbox.grid(row=row, column=column + 3, padx=2, pady=2, sticky='w')
 
-            button = tk.Button(root, text="Set", command=lambda: async_call(set_error, key=key, value=entry.get()), width=10)
+            button = tk.Button(root, text="Set", command=lambda: async_call(set_error, key=key, value=entry.get(), is_hex=checkbox_var.get()), width=10)
             button.grid(row=row, column=column + 4, padx=2, sticky='w')
 
             return entry, checkbox_var, button
@@ -171,9 +177,7 @@ class MyApp(tk.Tk):
         def set_custom_datapoint(key, data_type, value, is_hex):
             try:
                 if self.xlink_vehicle is not None and self.xlink_vehicle.is_connected():
-                    if is_hex is False and data_type not in ("9", "A", "b"):
-                        value = self.decimal_to_hex(value)
-                    self.xlink_vehicle.publish_datapoint_to_xlink(key, data_type, value)
+                    self.xlink_vehicle.publish_datapoint_to_xlink(key, data_type, value, is_hex)
             except Exception as e:
                 self.logger.error(e)
 
@@ -288,8 +292,11 @@ class MyApp(tk.Tk):
 
         # 创建一个 ScrolledText 小部件用于显示日志
         i = 0
-        self.log_widget = scrolledtext.ScrolledText(right_frame, state='disabled', width=70, height=34, wrap='none', font=('Arial', 8))
-        self.log_widget.grid(row=i, column=0, padx=2, pady=2)
+        self.log_widget = scrolledtext.ScrolledText(right_frame, state='disabled', wrap='none', font=('Arial', 8))
+        self.log_widget.grid(row=i, column=0, padx=2, pady=2, sticky="nsew")
+        right_frame.grid_rowconfigure(i, weight=1)
+        right_frame.grid_columnconfigure(0, weight=1)
+
         i += 1
         # 创建并配置水平滚动条
         x_scrollbar = tk.Scrollbar(right_frame, orient=tk.HORIZONTAL, command=self.log_widget.xview)

@@ -60,9 +60,9 @@ class XlinkVehicle:
             self.client.on_publish = self.on_publish
             self.client.connect(self.host, self.port, self.keepalive)
             self.logger.info(f"Client [{self.client_id}] is connected to {self.host}:{self.port}")
-            self.client.publish(f"$3/{self.device_id}", PayloadData.hex_string_to_byte("00030000"), 1)
-            self.client.publish(f"$4/{self.device_id}", PayloadData.hex_string_to_byte("0004000100"), 0)
-            self.publish_datapoint_to_xlink(105, "9", self.model)
+            self.client.publish(f"$3/{self.device_id}", PayloadData.hex_string_to_byte("00030000"), 1)  # 上线
+            # self.client.publish(f"$4/{self.device_id}", PayloadData.hex_string_to_byte("0004000100"), 0)
+            self.publish_datapoint_to_xlink(105, "9", self.model)  # model号
             # self.client.subscribe(f"$4/{self.device_id}", 1)
             # self.client.subscribe(f"$7/{self.device_id}", 1)
             # self.client.subscribe(f"$9/{self.device_id}", 1)
@@ -74,7 +74,7 @@ class XlinkVehicle:
 
             # for i in [104, 211, 1, 2, 3, 215, 4, 5, 217, 216]:
             #     self.client.publish(f"$6/{self.device_id}", VehiclePayload(i, "0", "0").get_byte(), 1)
-            self.publish_datapoint_to_xlink(0, "0", "62")
+            self.publish_datapoint_to_xlink(0, "0", "98")  # 电量
             self.client.loop_start()
         except Exception as e:
             self.logger.error(f"Cannot connect to MQTT broker: {e}")
@@ -89,20 +89,21 @@ class XlinkVehicle:
         except Exception as e:
             self.logger.error(f"Cannot disconnect: {e}")
 
-    def publish_datapoint_to_xlink(self, index, data_type, value):
+    def publish_datapoint_to_xlink(self, index, data_type, value, is_hex=False):
         data_type = str(data_type)
         try:
-            self.client.publish(f"$6/{self.device_id}", VehiclePayload(index, data_type, value).get_byte(), 1)
-            self.logger.info(f"Publishing to xlink: {index=}, type={PayloadData.type_map[data_type]}, {value=}")
+            payload = VehiclePayload(index, data_type, value, is_hex).get_byte()
+            self.client.publish(f"$6/{self.device_id}", payload, 1)
+            self.logger.info(f"Publishing to xlink: {index=}, type={PayloadData.type_map[data_type]}, {value=}, playload={payload.hex()}")
         except Exception as e:
             self.logger.error(f"Cannot publish to xlink: {e}")
 
-    def publish_error_to_xlink(self, index, value):
+    def publish_error_to_xlink(self, index, value, is_hex=False):
         # if not isinstance(index, int):
         #     index = int(index)
         # if not isinstance(value, str):
         #     value = str(value)
-        self.publish_datapoint_to_xlink(index, 0, value)
+        self.publish_datapoint_to_xlink(index, 0, value, is_hex)
 
     def toggle_switch(self, status=True):
         """
