@@ -110,6 +110,7 @@ class PayloadData:
         index_byte = self.int_to_1byte(self.index)
         _type_index = str(self.type)
         if _type_index in self.type_map:
+            self.value = str(self.value)
             if _type_index in ("0", "b"):  # Byte
                 self.type = "0"  # Boolean传输时实际是Byte
                 if self.value is True or "true" == self.value.lower():
@@ -118,7 +119,7 @@ class PayloadData:
                     value = "00"
                 else:
                     if self.is_hex:
-                        value = str(self.value).zfill(2)
+                        value = self.value.zfill(2)
                     else:
                         value = self.dec_to_hex_with_complement(self.value, 2)
                 # 补齐到偶数位
@@ -128,24 +129,24 @@ class PayloadData:
             elif _type_index in ("1", "2"):  # Int16, Unsigned Int16
                 # value = self.int_to_hex16(int(self.value, 16))
                 if self.is_hex:
-                    value = str(self.value).zfill(4)
+                    value = self.value.zfill(4)
                 else:
                     value = self.dec_to_hex_with_complement(self.value, 4)
                 value_byte = binascii.unhexlify(value)
             elif _type_index in ("3", "4", "7"):  # Int32, Unsigned Int32, Float
                 if self.is_hex:
-                    value = str(self.value).zfill(8)
+                    value = self.value.zfill(8)
                 else:
                     value = self.dec_to_hex_with_complement(self.value, 8)
                 value_byte = binascii.unhexlify(value)
             elif _type_index in ("5", "6"):  # Int64, Unsigned Int64
                 if self.is_hex:
-                    value = str(self.value).zfill(16)
+                    value = self.value.zfill(16)
                 else:
                     value = self.dec_to_hex_with_complement(self.value, 16)
                 value_byte = binascii.unhexlify(value)
             elif "9" == _type_index:  # String
-                value_byte = bytes(str(self.value), 'ascii')
+                value_byte = bytes(self.value, 'ascii')
             else:
                 raise ValueError(f"Payload type [{self.type_map[_type_index]}] has not been implemented")
         else:

@@ -94,7 +94,7 @@ class XlinkVehicle:
         try:
             payload = VehiclePayload(index, data_type, value, is_hex).get_byte()
             self.client.publish(f"$6/{self.device_id}", payload, 1)
-            self.logger.info(f"Publishing to xlink: {index=}, type={PayloadData.type_map[data_type]}, {value=}, playload={payload.hex()}")
+            self.logger.info(f"Publishing to xlink: {index=}, type={PayloadData.type_map[data_type]}, {value=}, {is_hex=}, playload={payload.hex()}")
         except Exception as e:
             self.logger.error(f"Cannot publish to xlink: {e}")
 
@@ -122,15 +122,16 @@ class XlinkVehicle:
         power 1 -> on, 0 -> off
         """
         if status:
-            self.publish_datapoint_to_xlink(6, 0, "0F")
-            self.publish_datapoint_to_xlink(214, 0, "01")
-            self.publish_datapoint_to_xlink(106, 0, "01")
+            self.publish_datapoint_to_xlink(6, 0, "0F", is_hex=True)
+            self.publish_datapoint_to_xlink(214, 0, 1)
+            self.publish_datapoint_to_xlink(106, 0, 1)
         else:
-            self.publish_datapoint_to_xlink(6, 0, "00")
-            self.publish_datapoint_to_xlink(214, 0, "00")
-            self.publish_datapoint_to_xlink(106, 0, "00")
+            self.publish_datapoint_to_xlink(6, 0, "00", is_hex=True)
+            self.publish_datapoint_to_xlink(214, 0, 1)
+            self.publish_datapoint_to_xlink(106, 0, 1)
 
-    def mock_cutting(self):
+    def mock_cutting(self, coordinates=[40.7128, -74.0060]):
+        coordinates = [45.42152, -75.69728]
         # Fleet-ProductDetail-009
         # 0
         self.publish_datapoint_to_xlink(7, 1, 1000)
@@ -138,6 +139,7 @@ class XlinkVehicle:
         self.publish_datapoint_to_xlink(18, 1, 0)
         self.publish_datapoint_to_xlink(24, 1, 0)
         self.publish_datapoint_to_xlink(28, 1, 0)
+        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")},{coordinates[0]},{coordinates[1]},{datetime.now().strftime("%Y%m%d%H%M%S")}")
         self.wait(10)
 
         # 1
@@ -147,20 +149,26 @@ class XlinkVehicle:
         self.publish_datapoint_to_xlink(24, 1, 2000)
         self.publish_datapoint_to_xlink(28, 1, 2000)
         session_id = datetime.now().strftime("%Y%m%d%H%M%S")
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7128, -74.0060, {datetime.now().strftime("%Y%m%d%H%M%S")}")
+        coordinates[0] += 0.001
+        coordinates[1] += 0.001
+        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")},{coordinates[0]},{coordinates[1]},{datetime.now().strftime("%Y%m%d%H%M%S")}")
         self.publish_datapoint_to_xlink(218, 9, f"{session_id},200,2,3,1")
         self.wait(60)
 
         # 2
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7228, -74.0060, {datetime.now().strftime("%Y%m%d%H%M%S")}")
+        coordinates[0] += 0.002
+        coordinates[1] += 0.001
+        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")},{coordinates[0]},{coordinates[1]},{datetime.now().strftime("%Y%m%d%H%M%S")}")
         self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,3,4,1")
         self.wait(10)
 
         # 3
+        coordinates[0] += 0.001
+        coordinates[1] += 0.002
         self.publish_datapoint_to_xlink(18, 1, 0)
         self.publish_datapoint_to_xlink(24, 1, 0)
         self.publish_datapoint_to_xlink(28, 1, 0)
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7228, -74.0160, {datetime.now().strftime("%Y%m%d%H%M%S")}")
+        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")},{coordinates[0]},{coordinates[1]},{datetime.now().strftime("%Y%m%d%H%M%S")}")
         self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,3,4,2")
         self.wait(10)
 
