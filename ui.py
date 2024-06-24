@@ -1,11 +1,12 @@
 import threading
 import time
-import tkinter as tk
 import logging
+import tkinter as tk
 from tkinter import ttk
 from tkinter import scrolledtext
 from xlink_vehicle import XlinkVehicle
 from vehicle_payload import PayloadData
+from logger_config import get_logger
 
 
 class MyApp(tk.Tk):
@@ -13,7 +14,7 @@ class MyApp(tk.Tk):
         super().__init__()
         self.log_handler = None
         self.xlink_vehicle = None
-        self.logger = logging.getLogger()
+        self.logger = get_logger()
         self.logger.setLevel(logging.DEBUG)
         self.connect_active_button = []
         self.running_mock_cutting = False
@@ -274,7 +275,7 @@ class MyApp(tk.Tk):
         left_buttons_frame = tk.Frame(left_frame)
         left_buttons_frame.grid(row=i, column=0, columnspan=4)
 
-        self.clean_error_button = tk.Button(left_buttons_frame, text="Clean Error", command=clean_error)
+        self.clean_error_button = tk.Button(left_buttons_frame, text="Clean Error", command=lambda: async_call(clean_error))
         self.clean_error_button.grid(row=0, column=0, padx=5)
         self.connect_active_button.append(self.clean_error_button)
 

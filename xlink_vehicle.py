@@ -1,12 +1,12 @@
 import paho.mqtt.client as mqtt
-import logging
 from datetime import datetime
 import time
 from vehicle_payload import PayloadData, VehiclePayload
+from logger_config import get_logger
 
 
 class XlinkVehicle:
-    def __init__(self, host, port, username, password, device_id, model, logger=logging.getLogger(__name__)):
+    def __init__(self, host, port, username, password, device_id, model, logger=get_logger(__name__)):
         if logger:
             self.logger = logger
         self.client_id = "X:DEVICE;A:2;V:1;"
@@ -208,7 +208,7 @@ if __name__ == "__main__":
     password = "47919B30B9A23BA33DBB5FA976E99BA2"
     device_id = "1144502349"
     model = "CZ60R24X"
-    client = XlinkVehicle(device_id, model)
+    client = XlinkVehicle(host, port, username, password, device_id, model)
     client.connect_to_xlink()
     client.publish_error_to_xlink(104, "11")
     for i in range(10):
