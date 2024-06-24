@@ -1,6 +1,6 @@
 import time
 import logging
-from log import get_logger
+from logger_config import get_logger
 import paho.mqtt.client as mqtt
 
 __all__ = ["MQTTClient"]
