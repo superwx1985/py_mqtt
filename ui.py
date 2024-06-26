@@ -6,7 +6,7 @@ from tkinter import ttk
 from tkinter import scrolledtext
 from xlink_vehicle import XlinkVehicle
 from vehicle_payload import PayloadData
-from logger_config import get_logger
+from logger_config import get_logger, TextHandler
 
 
 class MyApp(tk.Tk):
@@ -309,11 +309,11 @@ class MyApp(tk.Tk):
         self.log_handler = TextHandler(self.log_widget)
 
         # 设置日志格式
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s: %(message)s')
         self.log_handler.setFormatter(formatter)
 
         # 获取根日志记录器并添加处理器
-        logger = logging.getLogger()
+        logger = get_logger()
         logger.setLevel(logging.DEBUG)
         logger.addHandler(self.log_handler)
 
@@ -361,20 +361,6 @@ class MyApp(tk.Tk):
         hex_str = hex(decimal_int)[2:]
         # 返回十六进制字符串
         return hex_str.upper()
-
-
-class TextHandler(logging.Handler):
-    def __init__(self, widget):
-        super().__init__()
-        self.widget = widget
-
-    def emit(self, record):
-        msg = self.format(record)
-        print(msg)
-        self.widget.configure(state='normal')
-        self.widget.insert(tk.END, msg + '\n')
-        self.widget.configure(state='disabled')
-        self.widget.yview(tk.END)
 
 
 if __name__ == "__main__":

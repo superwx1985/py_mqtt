@@ -1,4 +1,5 @@
 import logging
+import tkinter as tk
 
 
 def get_logger(logger_name=__name__):
@@ -15,7 +16,7 @@ def get_logger(logger_name=__name__):
         console_handler.setLevel(logging.DEBUG)
 
         # 创建日志格式器
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 
         # 设置格式器到控制台处理器
         console_handler.setFormatter(formatter)
@@ -24,3 +25,16 @@ def get_logger(logger_name=__name__):
         logger.addHandler(console_handler)
 
     return logger
+
+
+class TextHandler(logging.Handler):
+    def __init__(self, widget):
+        super().__init__()
+        self.widget = widget
+
+    def emit(self, record):
+        msg = self.format(record)
+        self.widget.configure(state='normal')
+        self.widget.insert(tk.END, msg + '\n')
+        self.widget.configure(state='disabled')
+        self.widget.yview(tk.END)
