@@ -1,6 +1,6 @@
 from mqtt_client import MQTTClient
 import time
-from vehicle_payload import PayloadData, VehiclePayload
+from vehicle_payload import PayloadData, VehicleDataPointPayload
 
 
 class xlinkVehicle:
@@ -31,9 +31,9 @@ class xlinkVehicle:
         self.user_client.subscribe(f"$l/{self.device_id}", 1)
         self.user_client.publish(f"$j/{self.device_id}", PayloadData.hex_string_to_byte("0013000108"), 1)
         self.user_client.subscribe(f"$e", 1)
-        self.user_client.publish(f"$6/{self.device_id}", VehiclePayload(105, "9", f"{self.model}").get_byte(), 1)
+        self.user_client.publish(f"$6/{self.device_id}", VehicleDataPointPayload(105, "9", f"{self.model}").get_byte(), 1)
         for i in [104, 211, 1, 2, 3, 215, 4, 5, 217, 216]:
-            self.user_client.publish(f"$6/{self.device_id}", VehiclePayload(i, "0", "0").get_byte(), 1)
+            self.user_client.publish(f"$6/{self.device_id}", VehicleDataPointPayload(i, "0", "0").get_byte(), 1)
         # self.user_client.ping
 
     def publish_error_to_xlink(self, index, value):
@@ -41,7 +41,7 @@ class xlinkVehicle:
             index = int(index)
         if not isinstance(value, str):
             value = str(value)
-        self.user_client.publish(f"$6/{self.device_id}", VehiclePayload(index, "0", value).get_byte(), 1)
+        self.user_client.publish(f"$6/{self.device_id}", VehicleDataPointPayload(index, "0", value).get_byte(), 1)
 
     def disconnect_to_xlink(self):
         self.user_client.stop()

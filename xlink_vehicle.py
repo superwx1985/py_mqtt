@@ -1,8 +1,12 @@
 import paho.mqtt.client as mqtt
-from datetime import datetime
+import datetime
 import time
-from vehicle_payload import PayloadData, VehiclePayload
+from vehicle_payload import PayloadData, VehicleDataPointPayload, VehiclePairingPayload
 from logger_config import get_logger
+
+
+def get_utc_string(time_format="%Y%m%d%H%M%S"):
+    return datetime.datetime.now(datetime.UTC).strftime(time_format)
 
 
 class XlinkVehicle:
@@ -49,8 +53,28 @@ class XlinkVehicle:
     def on_publish(self, client, userdata, mid, reason_code, properties):
         self.logger.info(f"Published. [{reason_code}]")
 
+    def loging_publish(self, *args, **kwargs):
+        try:
+            self.client.publish(*args, **kwargs)
+            self.logger.info(f"Publishing to topic: {args[0]}, payload: {args[1].hex()}, qos: {args[2]}")
+        except Exception as e:
+            self.logger.error(f"Publish failed: {e}")
+
     def is_connected(self):
         return self.client.is_connected()
+
+    def on_message(self, client, userdata, message):
+        self.logger.info(f"Received message: {message.topic}: {message.payload.hex()}")
+        # pairing response
+        if message.topic == f"$h/{self.device_id}":
+            if len(message.payload) == 14 and message.payload[:2].hex() == "0011":
+                index = message.payload[4:6].hex()
+                device_id = int(self.device_id)
+                user_id = int(message.payload[6:10].hex(), 16)
+                pairing_code = int(message.payload[10:14].hex(), 16)
+                payload = VehiclePairingPayload(index, True, device_id, user_id, pairing_code).get_byte()
+                self.loging_publish(f"$i", payload, 1)
+                self.logger.info(f"Accepted pairing request from user {user_id} with pairing code {pairing_code}")
 
     def connect_to_xlink(self):
         try:
@@ -58,26 +82,28 @@ class XlinkVehicle:
             self.client.on_connect = self.on_connect
             self.client.on_disconnect = self.on_disconnect
             self.client.on_publish = self.on_publish
+            self.client.on_message = self.on_message
             self.client.connect(self.host, self.port, self.keepalive)
             self.logger.info(f"Client [{self.client_id}] is connected to {self.host}:{self.port}")
-            self.client.publish(f"$3/{self.device_id}", PayloadData.hex_string_to_byte("00030000"), 1)  # 上线
+            self.loging_publish(f"$3/{self.device_id}", PayloadData.hex_string_to_byte("00030000"), 1)  # 上线
             # self.client.publish(f"$4/{self.device_id}", PayloadData.hex_string_to_byte("0004000100"), 0)
             self.publish_datapoint_to_xlink(105, "9", self.model)  # model号
             # self.client.subscribe(f"$4/{self.device_id}", 1)
             # self.client.subscribe(f"$7/{self.device_id}", 1)
             # self.client.subscribe(f"$9/{self.device_id}", 1)
-            # self.client.subscribe(f"$c/{self.device_id}", 1)
-            # self.client.subscribe(f"$h/{self.device_id}", 1)
+            self.client.subscribe(f"$c/{self.device_id}", 1)
+            self.client.subscribe(f"$h/{self.device_id}", 1)  # 订阅配对消息
             # self.client.subscribe(f"$l/{self.device_id}", 1)
             # self.client.publish(f"$j/{self.device_id}", PayloadData.hex_string_to_byte("0013000108"), 1)
             # self.client.subscribe(f"$e", 1)
 
             # for i in [104, 211, 1, 2, 3, 215, 4, 5, 217, 216]:
             #     self.client.publish(f"$6/{self.device_id}", VehiclePayload(i, "0", "0").get_byte(), 1)
-            self.publish_datapoint_to_xlink(0, "0", "98")  # 电量
+            self.publish_datapoint_to_xlink(0, "0", "95")  # 电量
             self.client.loop_start()
         except Exception as e:
             self.logger.error(f"Cannot connect to MQTT broker: {e}")
+            raise e
 
     def disconnect_to_xlink(self):
         try:
@@ -92,9 +118,9 @@ class XlinkVehicle:
     def publish_datapoint_to_xlink(self, index, data_type, value, is_hex=False):
         data_type = str(data_type)
         try:
-            payload = VehiclePayload(index, data_type, value, is_hex).get_byte()
+            payload = VehicleDataPointPayload(index, data_type, value, is_hex).get_byte()
             self.client.publish(f"$6/{self.device_id}", payload, 1)
-            self.logger.info(f"Publishing to xlink: {index=}, type={PayloadData.type_map[data_type]}, {value=}, {is_hex=}, playload={payload.hex()}")
+            self.logger.info(f"Publishing DP to xlink: {index=}, type={PayloadData.type_map[data_type]}, {value=}, {is_hex=}, playload={payload.hex()}")
         except Exception as e:
             self.logger.error(f"Cannot publish to xlink: {e}")
 
@@ -132,6 +158,8 @@ class XlinkVehicle:
 
     def mock_cutting(self, coordinates=[40.7128, -74.0060]):
         coordinates = [45.42152, -75.69728]
+        def change_posisiton(logtiage):
+            pass
         # Fleet-ProductDetail-009
         # 0
         self.publish_datapoint_to_xlink(7, 1, 1000)
@@ -139,7 +167,7 @@ class XlinkVehicle:
         self.publish_datapoint_to_xlink(18, 1, 0)
         self.publish_datapoint_to_xlink(24, 1, 0)
         self.publish_datapoint_to_xlink(28, 1, 0)
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")},{coordinates[0]},{coordinates[1]},{datetime.now().strftime("%Y%m%d%H%M%S")}")
+        self.publish_datapoint_to_xlink(94, 9, f"{get_utc_string()},{coordinates[0]},{coordinates[1]},{get_utc_string()}")
         self.wait(10)
 
         # 1
@@ -148,17 +176,22 @@ class XlinkVehicle:
         self.publish_datapoint_to_xlink(18, 1, 2000)
         self.publish_datapoint_to_xlink(24, 1, 2000)
         self.publish_datapoint_to_xlink(28, 1, 2000)
-        session_id = datetime.now().strftime("%Y%m%d%H%M%S")
+        session_id = get_utc_string()
         coordinates[0] += 0.001
         coordinates[1] += 0.001
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")},{coordinates[0]},{coordinates[1]},{datetime.now().strftime("%Y%m%d%H%M%S")}")
         self.publish_datapoint_to_xlink(218, 9, f"{session_id},200,2,3,1")
-        self.wait(60)
+        self.publish_datapoint_to_xlink(94, 9, f"{get_utc_string()},{coordinates[0]},{coordinates[1]},{get_utc_string()}")
+        self.wait(10)
+        self.wait(10)
+        self.wait(10)
+        self.wait(10)
+        self.wait(10)
+        self.wait(10)
 
         # 2
         coordinates[0] += 0.002
         coordinates[1] += 0.001
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")},{coordinates[0]},{coordinates[1]},{datetime.now().strftime("%Y%m%d%H%M%S")}")
+        self.publish_datapoint_to_xlink(94, 9, f"{get_utc_string()},{coordinates[0]},{coordinates[1]},{get_utc_string()}")
         self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,3,4,1")
         self.wait(10)
 
@@ -168,37 +201,37 @@ class XlinkVehicle:
         self.publish_datapoint_to_xlink(18, 1, 0)
         self.publish_datapoint_to_xlink(24, 1, 0)
         self.publish_datapoint_to_xlink(28, 1, 0)
-        self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")},{coordinates[0]},{coordinates[1]},{datetime.now().strftime("%Y%m%d%H%M%S")}")
-        self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,3,4,2")
+        self.publish_datapoint_to_xlink(94, 9, f"{get_utc_string()},{coordinates[0]},{coordinates[1]},{get_utc_string()}")
+        self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,3,4,1")
         self.wait(10)
 
-        #4
-        # self.publish_datapoint_to_xlink(7, 1, 0)
-        # self.publish_datapoint_to_xlink(11, 1, 0)
-        # self.wait(10)
-        #
-        # # 5
-        # self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7328, -74.0160, {datetime.now().strftime("%Y%m%d%H%M%S")}")
-        # self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,4,4,1")
-        # self.wait(10)
-        #
-        # # 6
-        # self.wait(60)
-        # self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7328, -74.0260, {datetime.now().strftime("%Y%m%d%H%M%S")}")
-        # self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,15,4,0")
-        # self.wait(10)
-        #
-        # # 9
-        # self.publish_datapoint_to_xlink(7, 1, 1000)
-        # self.publish_datapoint_to_xlink(11, 1, 1000)
-        # self.publish_datapoint_to_xlink(18, 1, 2000)
-        # self.publish_datapoint_to_xlink(24, 1, 2000)
-        # self.publish_datapoint_to_xlink(28, 1, 2000)
-        # session_id = datetime.now().strftime("%Y%m%d%H%M%S")
-        # self.publish_datapoint_to_xlink(94, 9, f"{datetime.now().strftime("%Y%m%d%H%M%S")}, 40.7428, -74.0260, {datetime.now().strftime("%Y%m%d%H%M%S")}")
-        # self.publish_datapoint_to_xlink(218, 9, f"{session_id},150,1,3,1")
-        # self.wait(10)
-        # pass
+        4
+        self.publish_datapoint_to_xlink(7, 1, 0)
+        self.publish_datapoint_to_xlink(11, 1, 0)
+        self.wait(10)
+
+        # 5
+        self.publish_datapoint_to_xlink(94, 9, f"{get_utc_string()}, 40.7328, -74.0160, {get_utc_string()}")
+        self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,4,4,2")
+        self.wait(10)
+
+        # 6
+        self.wait(60)
+        self.publish_datapoint_to_xlink(94, 9, f"{get_utc_string()}, 40.7328, -74.0260, {get_utc_string()}")
+        self.publish_datapoint_to_xlink(218, 9, f"{session_id},300,15,4,0")
+        self.wait(10)
+
+        # 9
+        self.publish_datapoint_to_xlink(7, 1, 1000)
+        self.publish_datapoint_to_xlink(11, 1, 1000)
+        self.publish_datapoint_to_xlink(18, 1, 2000)
+        self.publish_datapoint_to_xlink(24, 1, 2000)
+        self.publish_datapoint_to_xlink(28, 1, 2000)
+        session_id = get_utc_string()
+        self.publish_datapoint_to_xlink(94, 9, f"{get_utc_string()}, 40.7428, -74.0260, {get_utc_string()}")
+        self.publish_datapoint_to_xlink(218, 9, f"{session_id},150,1,3,1")
+        self.wait(10)
+        pass
 
 
 if __name__ == "__main__":
@@ -206,11 +239,16 @@ if __name__ == "__main__":
     port = 1883
     username = "163e82bac7ca1f41163e82bac7ca9001"
     password = "47919B30B9A23BA33DBB5FA976E99BA2"
-    device_id = "1144502349"
-    model = "CZ60R24X"
+    device_id = "851906253"
+    model = "RZ42M82"
     client = XlinkVehicle(host, port, username, password, device_id, model)
     client.connect_to_xlink()
     client.publish_error_to_xlink(104, "11")
+
+    t = bytes.fromhex(f"$h/{device_id}".encode().hex())
+    msg = mqtt.MQTTMessage(topic=t)
+    msg.payload = bytes.fromhex("0011000a000732c6fb310001b207")
+    client.on_message(None, None, msg)
     for i in range(10):
         print(i)
         time.sleep(1)

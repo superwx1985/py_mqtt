@@ -83,13 +83,19 @@ class MyApp(tk.Tk):
                          "password": "c94d6dd9dc9efe1016e78cfddb519210"},
             }
             if self.xlink_vehicle is None:
-                env_id = self.env_combo.get()
-                self.xlink_vehicle = XlinkVehicle(broker[env_id]["host"], broker[env_id]["port"],
-                                                  broker[env_id]["username"], broker[env_id]["password"],
-                                                  entries1["Device ID"].get(), entries1["Model"].get(), self.logger)
-                self.xlink_vehicle.connect_to_xlink()
-                self.connect_button.grid_remove()
-                self.disconnect_button.grid(row=connect_row, column=4, padx=2, sticky='w')
+                try:
+                    env_id = self.env_combo.get()
+                    self.xlink_vehicle = XlinkVehicle(broker[env_id]["host"], broker[env_id]["port"],
+                                                      broker[env_id]["username"], broker[env_id]["password"],
+                                                      entries1["Device ID"].get(), entries1["Model"].get(), self.logger)
+                    self.xlink_vehicle.connect_to_xlink()
+                except Exception as e:
+                    self.xlink_vehicle = None
+                    self.connect_button.grid(row=connect_row, column=4, padx=2, sticky='w')
+                    self.disconnect_button.grid_remove()
+                else:
+                    self.connect_button.grid_remove()
+                    self.disconnect_button.grid(row=connect_row, column=4, padx=2, sticky='w')
 
         def disconnect():
             if self.xlink_vehicle is not None and self.xlink_vehicle.is_connected():
@@ -109,7 +115,7 @@ class MyApp(tk.Tk):
         i += 1
 
         # 连接状态标签
-        self.status_label = tk.Label(left_frame, text="Disconnected", bg="red", fg="white", font=('Arial', 8))
+        self.status_label = tk.Label(left_frame, text="Disconnected", bg="pink", fg="white", font=('Arial', 8))
         self.status_label.grid(row=i, column=4, padx=2)
 
         # 创建前两个输入框
@@ -155,18 +161,20 @@ class MyApp(tk.Tk):
             return entry, checkbox_var, button
 
         entries2 = dict()
-        error_map = {104: {"code": "BMS", "name": "Battery"},
-                     211: {"code": "BC", "name": "Battery charger"},
-                     1: {"code": "TR", "name": "Right wheel motor controller"},
-                     2: {"code": "TL", "name": "Left wheel motor controller"},
-                     3: {"code": "ML", "name": "Left blade motor controller"},
-                     215: {"code": "MLS", "name": "Second left blade motor controller"},
-                     4: {"code": "MM", "name": "Middle blade motor controller"},
-                     5: {"code": "MR", "name": "Right blade motor controller"},
-                     217: {"code": "MRS", "name": "Second right blade motor controller"},
-                     216: {"code": "AT", "name": "Attachment controller"},
-                     174: {"code": "?", "name": "Vehicle error code"},
-                     }
+        error_map = {
+            1: {"code": "TR", "name": "Right wheel motor controller"},
+            2: {"code": "TL", "name": "Left wheel motor controller"},
+            3: {"code": "ML", "name": "Left blade motor controller"},
+            4: {"code": "MM", "name": "Middle blade motor controller"},
+            5: {"code": "MR", "name": "Right blade motor controller"},
+            104: {"code": "BMS", "name": "Battery"},
+            137: {"code": "PMU", "name": "6P Battery"},
+            174: {"code": "V", "name": "Vehicle"},
+            211: {"code": "BC", "name": "Battery charger"},
+            215: {"code": "MLS", "name": "Second left blade motor controller"},
+            216: {"code": "AT", "name": "Attachment controller"},
+            217: {"code": "MRS", "name": "Second right blade motor controller"},
+        }
         for k, v in error_map.items():
             entries2[k] = create_label_entry_button(left_frame, k, f"{v['code']} | {v['name']}", 0, i, 0, k)
             i += 1
@@ -342,7 +350,7 @@ class MyApp(tk.Tk):
             if self.running_mock_cutting is False:
                 self.mock_cutting_button.config(state='normal')
         else:
-            self.status_label.config(text="Disconnected", bg="red")
+            self.status_label.config(text="Disconnected", bg="pink")
             self.connect_button.config(state='normal')
             for button in self.connect_active_button:
                 button.config(state='disabled')
