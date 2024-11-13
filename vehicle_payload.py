@@ -10,7 +10,7 @@ class VehicleDataPointPayload:
         integer_value = int(binary_string, 2)
         return PayloadData.int_to_bytes(integer_value)
 
-    def __init__(self, index, _type, value, is_hex=False):
+    def __init__(self, dp_list):
         self.payload_type = "0006"  # 数据包类型
         self.sync_datapoint_flag = "01100000"  # 数据端点上报标识
         # 7 设备名称标识（name flag）
@@ -20,7 +20,9 @@ class VehicleDataPointPayload:
         # 3 指定时间标识（timestamp flag）根据当前时区，8个字节Unix时间戳，在设备名称（如果有的话）后面，在datapoint payload前面
         # 2 数据端点解析失败返回结果不断开连接（MQTT标准协议解析失败或其他错误仍然断开连接），当开启本选项时，在时间标识后面增加两个字节的MsgID
         # 1~0 预留
-        self.payload_data_byte = PayloadData(index, _type, value, is_hex).get_byte()
+        self.payload_data_byte = b''
+        for dp_map in dp_list:
+            self.payload_data_byte += PayloadData(dp_map["index"], dp_map["type"], dp_map["value"], dp_map["is_hex"]).get_byte()
         self.sync_datapoint_flag_byte = self.change_bin_str_to_byte(self.sync_datapoint_flag)
         self.package_byte = self.sync_datapoint_flag_byte + self.payload_data_byte
         length_hex_string = hex(len(self.package_byte))[2:]
@@ -196,15 +198,17 @@ class VehiclePairingPayload:
 
 
 if __name__ == "__main__":
-    _index = 1
-    _type = 3
-    _value = '10'
-    _is_hex = True
-    pd = PayloadData(_index, _type, _value, _is_hex)
-    print(pd.get_byte().hex())
-    vdpp = VehicleDataPointPayload(_index, _type, _value, _is_hex)
+    _dp_list = [
+        {"index": 0, "type": 0, "value": 85, "is_hex": False},
+        {"index": 1, "type": 0, "value": 50, "is_hex": False},
+        {"index": 3, "type": 0, "value": 21, "is_hex": False},
+        {"index": 6, "type": 0, "value": 0, "is_hex": False},
+        {"index": 7, "type": 1, "value": 2000, "is_hex": False},
+        {"index": 94, "type": 9, "value": "20240401070845,40.7328,-74.0060,20240401070937", "is_hex": False},
+    ]
+    vdpp = VehicleDataPointPayload(_dp_list)
     print(vdpp.get_byte().hex())
 
-    vpp = VehiclePairingPayload("02a8", True, 851906253, 851906493, 111111)
-    print(vpp.get_byte().hex())
+    # vpp = VehiclePairingPayload("02a8", True, 851906253, 851906493, 111111)
+    # print(vpp.get_byte().hex())
 

@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 import datetime
 import time
+import hashlib
 from vehicle_payload import PayloadData, VehicleDataPointPayload, VehiclePairingPayload
 from logger_config import get_logger
 
@@ -10,7 +11,7 @@ def get_utc_string(time_format="%Y%m%d%H%M%S"):
 
 
 class XlinkVehicle:
-    def __init__(self, host, port, username, password, device_id, model, logger=get_logger(__name__)):
+    def __init__(self, host, port, product_id, product_key, device_id, model, logger=get_logger(__name__)):
         if logger:
             self.logger = logger
         self.client_id = "X:DEVICE;A:2;V:1;"
@@ -18,8 +19,8 @@ class XlinkVehicle:
         # self.host = "mqtt.eclipseprojects.io"
         self.port = port
         self.keepalive = 20
-        self.username = username
-        self.password = password
+        self.username = product_id
+        self.password = self.generate_password(product_id, product_key)
         self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=self.client_id, protocol=mqtt.MQTTv311)
         self.device_id = device_id
         self.model = model
@@ -116,11 +117,19 @@ class XlinkVehicle:
             self.logger.error(f"Cannot disconnect: {e}")
 
     def publish_datapoint_to_xlink(self, index, data_type, value, is_hex=False):
-        data_type = str(data_type)
         try:
-            payload = VehicleDataPointPayload(index, data_type, value, is_hex).get_byte()
+            dp_list = [{"index": index, "type": data_type, "value": value, "is_hex": is_hex}]
+            payload = VehicleDataPointPayload(dp_list).get_byte()
             self.client.publish(f"$6/{self.device_id}", payload, 1)
             self.logger.info(f"Publishing DP to xlink: {index=}, type={PayloadData.type_map[data_type]}, {value=}, {is_hex=}, playload={payload.hex()}")
+        except Exception as e:
+            self.logger.error(f"Cannot publish to xlink: {e}")
+
+    def publish_multiple_datapoint_to_xlink(self, dp_list):
+        try:
+            payload = VehicleDataPointPayload(dp_list).get_byte()
+            self.client.publish(f"$6/{self.device_id}", payload, 1)
+            self.logger.info(f"Publishing DP list to xlink: {dp_list}, playload={payload.hex()}")
         except Exception as e:
             self.logger.error(f"Cannot publish to xlink: {e}")
 
@@ -233,12 +242,24 @@ class XlinkVehicle:
         self.wait(10)
         pass
 
+    @staticmethod
+    def generate_password(product_id, product_key):
+        def md5_encryption(data):
+            md5 = hashlib.md5()  # 创建一个md5对象
+            md5.update(data.encode('utf-8'))  # 使用utf-8编码数据
+            return md5.hexdigest()  # 返回加密后的十六进制字符串
+
+        return md5_encryption(f'{product_id}{product_key}')
+
 
 if __name__ == "__main__":
     host = "cantonrlmudp.globetools.com"
     port = 1883
-    username = "163e82bac7ca1f41163e82bac7ca9001"
-    password = "47919B30B9A23BA33DBB5FA976E99BA2"
+    product_id = '163e82bac7ca1f41163e82bac7ca9001'
+    product_key = '78348f781e99ced28bbbbfa73fc3c3ec'
+
+    username = product_id
+    password = XlinkVehicle.generate_password(product_id, product_key)
     device_id = "851906253"
     model = "RZ42M82"
     client = XlinkVehicle(host, port, username, password, device_id, model)

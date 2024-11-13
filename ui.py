@@ -9,6 +9,19 @@ from vehicle_payload import PayloadData
 from logger_config import get_logger, TextHandler
 
 
+broker = {
+    "DEV6": {"host": "cantonrlmudp.globetools.com", "port": 1883,
+             "username": "163e82bac7ca1f41163e82bac7ca9001",
+             "password": "78348f781e99ced28bbbbfa73fc3c3ec"},
+    "DEV9": {"host": "dev9-xlink-mqtt.globe-groups.com", "port": 1883,
+             "username": "163e82ca81421f41163e82ca81427001",
+             "password": "3709185dfdf50d9563eedceadbccb3d3"},
+    "DEV7": {"host": "dev7mqtt.globe-groups.com", "port": 1883,
+             "username": "163e82bac7ca1f41163e82bac7ca9001",
+             "password": "78348f781e99ced28bbbbfa73fc3c3ec"},
+}
+
+
 class MyApp(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -67,21 +80,14 @@ class MyApp(tk.Tk):
         label = tk.Label(frame1, text="Environment")
         label.grid(row=0, column=1, padx=2, pady=2, sticky='e')
         self.env_combo = ttk.Combobox(left_frame, state="readonly")
-        self.env_combo['values'] = ('DEV6', 'DEV9',)
+        keys_tuple = tuple(broker.keys())
+        self.env_combo['values'] = keys_tuple
         self.env_combo.current(0)
         self.env_combo.grid(row=i, column=2, padx=2, pady=2, sticky='w')
 
         connect_row = i
 
         def connect():
-            broker = {
-                "DEV6": {"host": "cantonrlmudp.globetools.com", "port": 1883,
-                         "username": "163e82bac7ca1f41163e82bac7ca9001",
-                         "password": "47919B30B9A23BA33DBB5FA976E99BA2"},
-                "DEV9": {"host": "dev9-xlink-mqtt.globe-groups.com", "port": 1883,
-                         "username": "163e82ca81421f41163e82ca81427001",
-                         "password": "c94d6dd9dc9efe1016e78cfddb519210"},
-            }
             if self.xlink_vehicle is None:
                 try:
                     env_id = self.env_combo.get()
