@@ -8,16 +8,16 @@ from xlink_vehicle import XlinkVehicle
 
 # xlink_api = "https://dev6-xlink.globetools.com:444"
 xlink_api = "https://dev7-xlink.globe-groups.com:444"
-xlink_access_key_id = "323e82ccad7b7600"
-xlink_access_key_secret = "242fa3c5993867a97200ffc7f71bd4f4"
+xlink_access_key_id = "323e82c6f68cf800"
+xlink_access_key_secret = "3a346b145aebe05f3e3a5178a7500f3d"
 # host = "cantonrlmudp.globetools.com"
 host = "dev7mqtt.globe-groups.com"
 port = 1883
 product_id = "163e82bac7ca1f41163e82bac7ca9001"
 product_key = "78348f781e99ced28bbbbfa73fc3c3ec"
 model = ("CZ60R24X", "CZ52R24X", "CZ32S8X", "CZ60R18X")
-max_number = 500
-timeout = 1800
+max_number = 100
+timeout = 3600*10
 online_devices = dict()
 
 
@@ -43,7 +43,7 @@ def get_offline_vehicle(product_id):
         # $gte：大于或等于该字段值
         # $like：模糊匹配该字段值
         "is_online": {
-            "$in": [False]
+            "$in": [True, False]
         }
     },
         "offset": "0",
@@ -79,8 +79,12 @@ dp_list = [
         {"index": 6, "type": 0, "value": lambda: random.randint(0, 15), "is_hex": False},
         {"index": 7, "type": 1, "value": lambda: random.randint(0, 3000), "is_hex": False},
         {"index": 11, "type": 1, "value": lambda: random.randint(0, 3000), "is_hex": False},
+        {"index": 18, "type": 1, "value": lambda: random.randint(0, 5000), "is_hex": False},
+        {"index": 24, "type": 1, "value": lambda: random.randint(0, 5000), "is_hex": False},
+        {"index": 28, "type": 1, "value": lambda: random.randint(0, 5000), "is_hex": False},
         {"index": 94, "type": 9, "value": lambda: f"{get_random_datetime_str()},40.{random.randint(0, 9999):04},-74.{random.randint(0, 9999):04},{get_random_datetime_str()}", "is_hex": False},
         {"index": 210, "type": 2, "value": lambda: random.randint(0, 20000), "is_hex": False},
+        {"index": 218, "type": 9, "value": lambda: f"{datetime.now().strftime("%Y%m%d%H%M%S")},{random.randint(0, 200)},{random.randint(0, 180)},{random.randint(0, 45)},{random.randint(0, 2)}", "is_hex": False},
     ]
 
 
@@ -104,7 +108,7 @@ def mock_devices(id, device_id, device_mac, device_sn, device_model, timeout=60)
     count = 0
     while time.time() - start_time < timeout:
         count += 1
-        time.sleep(random.uniform(1, 6))
+        time.sleep(random.uniform(0.3, 0.5))
         # 随机选择一些DP上报
         client.publish_multiple_datapoint_to_xlink(get_random_dp_list(dp_list)),
 
@@ -114,18 +118,18 @@ def mock_devices(id, device_id, device_mac, device_sn, device_model, timeout=60)
 
 if __name__ == '__main__':
 
-    # data = {'v': 2, 'count': 1, 'list': [
+    # device_data = {'v': 2, 'count': 1, 'list': [
     #     {'id': 851902514, 'sn': 'VIC1230002', 'is_online': True, 'mac': '1234567890090002'}
     # ]}
 
-    # data = get_offline_vehicle(product_id)
+    # device_data = get_offline_vehicle(product_id)
 
     with open('xlink_device_list2.json', 'r') as file:
-         data = json.load(file)
+        device_data = json.load(file)
 
     threads = []
     i = 0
-    for l in data["list"]:
+    for l in device_data["list"]:
         i += 1
         device = l
         device_id = device["id"]
