@@ -22,7 +22,7 @@ class VehicleDataPointPayload:
         # 1~0 预留
         self.payload_data_byte = b''
         for dp_map in dp_list:
-            self.payload_data_byte += PayloadData(dp_map["index"], dp_map["type"], dp_map["value"], dp_map["is_hex"]).get_byte()
+            self.payload_data_byte += PayloadData(dp_map["index"], dp_map["type"], dp_map["value"], dp_map.get("is_hex", False)).get_byte()
         self.sync_datapoint_flag_byte = self.change_bin_str_to_byte(self.sync_datapoint_flag)
         self.package_byte = self.sync_datapoint_flag_byte + self.payload_data_byte
         length_hex_string = hex(len(self.package_byte))[2:]

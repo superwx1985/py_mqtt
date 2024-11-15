@@ -16,8 +16,8 @@ port = 1883
 product_id = "163e82bac7ca1f41163e82bac7ca9001"
 product_key = "78348f781e99ced28bbbbfa73fc3c3ec"
 model = ("CZ60R24X", "CZ52R24X", "CZ32S8X", "CZ60R18X")
-max_number = 100
-timeout = 3600*10
+max_number = 50
+timeout = 3600*20
 online_devices = dict()
 
 
@@ -73,18 +73,39 @@ def get_offline_vehicle(product_id):
 
 
 dp_list = [
-        {"index": 0, "type": 0, "value": lambda: random.randint(0, 100), "is_hex": False},
-        {"index": 1, "type": 0, "value": lambda: random.randint(0, 100), "is_hex": False},
-        {"index": 3, "type": 0, "value": lambda: random.randint(0, 100), "is_hex": False},
-        {"index": 6, "type": 0, "value": lambda: random.randint(0, 15), "is_hex": False},
-        {"index": 7, "type": 1, "value": lambda: random.randint(0, 3000), "is_hex": False},
-        {"index": 11, "type": 1, "value": lambda: random.randint(0, 3000), "is_hex": False},
-        {"index": 18, "type": 1, "value": lambda: random.randint(0, 5000), "is_hex": False},
-        {"index": 24, "type": 1, "value": lambda: random.randint(0, 5000), "is_hex": False},
-        {"index": 28, "type": 1, "value": lambda: random.randint(0, 5000), "is_hex": False},
-        {"index": 94, "type": 9, "value": lambda: f"{get_random_datetime_str()},40.{random.randint(0, 9999):04},-74.{random.randint(0, 9999):04},{get_random_datetime_str()}", "is_hex": False},
-        {"index": 210, "type": 2, "value": lambda: random.randint(0, 20000), "is_hex": False},
-        {"index": 218, "type": 9, "value": lambda: f"{datetime.now().strftime("%Y%m%d%H%M%S")},{random.randint(0, 200)},{random.randint(0, 180)},{random.randint(0, 45)},{random.randint(0, 2)}", "is_hex": False},
+        {"index": 0, "type": 0, "value": lambda: random.randint(0, 100)},
+        {"index": 1, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 2, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 3, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 4, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 5, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 6, "type": 0, "value": lambda: random.choice((0, 3, 6, 11, 14, 40, 67, 70, 75,))},
+        {"index": 7, "type": 1, "value": lambda: random.randint(0, 3000)},
+        {"index": 8, "type": 1, "value": lambda: random.randint(0, 500)},
+        {"index": 11, "type": 1, "value": lambda: random.randint(0, 3000)},
+        {"index": 12, "type": 1, "value": lambda: random.randint(0, 500)},
+        {"index": 16, "type": 1, "value": lambda: random.randint(0, 10)},
+        {"index": 18, "type": 1, "value": lambda: random.randint(0, 5000)},
+        {"index": 22, "type": 1, "value": lambda: random.randint(0, 10)},
+        {"index": 24, "type": 1, "value": lambda: random.randint(0, 5000)},
+        {"index": 26, "type": 1, "value": lambda: random.randint(0, 10)},
+        {"index": 28, "type": 1, "value": lambda: random.randint(0, 5000)},
+        {"index": 31, "type": 7, "value": lambda: round(random.uniform(0, 61500), 1)},
+        {"index": 42, "type": 7, "value": lambda: round(random.uniform(0, 184), 1)},
+        {"index": 43, "type": 7, "value": lambda: round(random.uniform(0, 125), 1)},
+        {"index": 94, "type": 9, "value": lambda: f"{get_random_datetime_str()},40.71{random.randint(0, 99):03},-74.00{random.randint(0, 99):03},{get_random_datetime_str()}"},
+        {"index": 97, "type": 2, "value": 19},
+        {"index": 98, "type": 2, "value": 3},
+        {"index": 103, "type": 9, "value": "GE25.1.4.0"},
+        {"index": 104, "type": 0, "value": lambda: random.randint(0, 0)},
+        # {"index": 105, "type": 9, "value": "82ZTCS92"},
+        {"index": 106, "type": 0, "value": True},
+        {"index": 210, "type": 2, "value": lambda: random.randint(0, 20000)},
+        {"index": 211, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 215, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 216, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 217, "type": 0, "value": lambda: random.randint(0, 0)},
+        {"index": 218, "type": 9, "value": lambda: f"{datetime.now().strftime("%Y%m%d%H%M%S")},{random.randint(0, 200)},{random.randint(0, 180)},{random.randint(0, 45)},{random.randint(0, 2)}"},
     ]
 
 
@@ -96,7 +117,8 @@ def get_random_dp_list(_dp_list):
     random_dp_list = list()
     for dp in _:
         new_dp = dict(dp)
-        new_dp["value"] = dp["value"]()
+
+        new_dp["value"] = dp["value"]() if callable(dp["value"]) else dp["value"]
         random_dp_list.append(new_dp)
     return random_dp_list
 
@@ -108,7 +130,8 @@ def mock_devices(id, device_id, device_mac, device_sn, device_model, timeout=60)
     count = 0
     while time.time() - start_time < timeout:
         count += 1
-        time.sleep(random.uniform(0.3, 0.5))
+        # time.sleep(random.uniform(0.3, 0.5))
+        time.sleep(random.uniform(3, 10))
         # 随机选择一些DP上报
         client.publish_multiple_datapoint_to_xlink(get_random_dp_list(dp_list)),
 
@@ -118,14 +141,14 @@ def mock_devices(id, device_id, device_mac, device_sn, device_model, timeout=60)
 
 if __name__ == '__main__':
 
-    # device_data = {'v': 2, 'count': 1, 'list': [
-    #     {'id': 851902514, 'sn': 'VIC1230002', 'is_online': True, 'mac': '1234567890090002'}
-    # ]}
+    device_data = {'v': 2, 'count': 1, 'list': [
+        {'id': 1144504009, 'sn': 'GWZ2021003', 'is_online': True, 'mac': '87654321B003'}
+    ]}
 
     # device_data = get_offline_vehicle(product_id)
 
-    with open('xlink_device_list2.json', 'r') as file:
-        device_data = json.load(file)
+    # with open('xlink_device_list2.json', 'r') as file:
+    #     device_data = json.load(file)
 
     threads = []
     i = 0

@@ -118,6 +118,7 @@ class XlinkVehicle:
 
     def publish_datapoint_to_xlink(self, index, data_type, value, is_hex=False):
         try:
+            data_type = str(data_type)
             dp_list = [{"index": index, "type": data_type, "value": value, "is_hex": is_hex}]
             payload = VehicleDataPointPayload(dp_list).get_byte()
             self.client.publish(f"$6/{self.device_id}", payload, 1)
