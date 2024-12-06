@@ -1,0 +1,6157 @@
+[
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "Battery SOC",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 0,
+        "description": "Battery SOC（电池容量）",
+        "en_description": "Battery SOC（电池容量）",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Battery SOC",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatteryStateOfCharge",
+        "id": "1a3e82ca8143b000",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox0224_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 1,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox0224_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MasterControllerError",
+        "id": "1a3e82ca8143b001",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox224_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 2,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox224_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SlaveControllerError",
+        "id": "1a3e82ca8143b002",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox224_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 3,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox224_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LeftBladeControllerError",
+        "id": "1a3e82ca8143b003",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox224_5",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 4,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox224_5",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MiddleBladeControllerError",
+        "id": "1a3e82ca8143b200",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox224_6",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 5,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox224_6",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "RightBladeControllerError",
+        "id": "1a3e82ca8143b201",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox326_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 6,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox326_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SwitchStatus",
+        "id": "1a3e82ca8143b202",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "RPM",
+        "is_system": false,
+        "en_field_name": "Ox326_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 7,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox326_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MasterWheelMotorSpeed",
+        "id": "1a3e82ca8143b203",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Ampere",
+        "is_system": false,
+        "en_field_name": "Ox326_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 8,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox326_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MasterWheelControllerCurrent",
+        "id": "1a3e82ca8143b204",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox326_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 9,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox326_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MasterWheelMotorTemp",
+        "id": "1a3e82ca8143b205",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox326_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 10,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox326_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MasterControllerTemperature",
+        "id": "1a3e82ca8143b206",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "RPM",
+        "is_system": false,
+        "en_field_name": "Ox2A6_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 11,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2A6_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SlaveWheelMotorSpeed",
+        "id": "1a3e82ca8143b207",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Ampere",
+        "is_system": false,
+        "en_field_name": "Ox2A6_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 12,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2A6_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SlaveWheelControllerCurrent",
+        "id": "1a3e82ca8143b400",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox2A6_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 13,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2A6_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SlaveWheelMotorTemp",
+        "id": "1a3e82ca8143b401",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox2A6_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 14,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2A6_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SlaveWheelControllerTemp",
+        "id": "1a3e82ca8143b402",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox1A8_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 15,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1A8_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1A8_1",
+        "id": "1a3e82ca8143b403",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Ampere",
+        "is_system": false,
+        "en_field_name": "Ox1A8_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 16,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1A8_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LeftBladeControllerCurrent",
+        "id": "1a3e82ca8143b404",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox01A8_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 17,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox01A8_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LeftBladeMotorPWM",
+        "id": "1a3e82ca8143b405",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "RPM",
+        "is_system": false,
+        "en_field_name": "Ox1A8_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 65535,
+        "index": 18,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1A8_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LeftBladeMotorSpeed",
+        "id": "1a3e82ca8143b406",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox2A8_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 19,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2A8_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LeftBladeControllerTemp",
+        "id": "1a3e82ca8143b407",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox2A8_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 20,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2A8_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LeftBladeMotorTemp",
+        "id": "1a3e82ca8143b408",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox1A9_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 21,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1A9_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1A9_1",
+        "id": "1a3e82ca8143b600",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Ampere",
+        "is_system": false,
+        "en_field_name": "Ox1A9_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 22,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1A9_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1A9_2",
+        "id": "1a3e82ca8143b601",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox1A9_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 23,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1A9_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1A9_3",
+        "id": "1a3e82ca8143b602",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "RPM",
+        "is_system": false,
+        "en_field_name": "Ox1A9_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 65535,
+        "index": 24,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1A9_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1A9_4",
+        "id": "1a3e82ca8143b603",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox1AA_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 25,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1AA_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1AA_1",
+        "id": "1a3e82ca8143b604",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Ampere",
+        "is_system": false,
+        "en_field_name": "Ox1AA_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 26,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1AA_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1AA_2",
+        "id": "1a3e82ca8143b605",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox1AA_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 27,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1AA_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1AA_3",
+        "id": "1a3e82ca8143b606",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "RPM",
+        "is_system": false,
+        "en_field_name": "Ox1AA_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 65535,
+        "index": 28,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox1AA_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1AA_4",
+        "id": "1a3e82ca8143b607",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox301_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 29,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 5,
+        "is_write": false,
+        "field_name": "Ox301_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox301_1",
+        "id": "1a3e82ca8143b608",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox301_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 30,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 5,
+        "is_write": false,
+        "field_name": "Ox301_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox301_2",
+        "id": "1a3e82ca8143b609",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mA",
+        "is_system": false,
+        "en_field_name": "Ox302_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 31,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 5,
+        "is_write": false,
+        "field_name": "Ox302_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox302_1",
+        "id": "1a3e82ca8143b60a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "Ox302_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 32,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox302_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox302_2",
+        "id": "1a3e82ca8143b60b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox302_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 33,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox302_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox302_3",
+        "id": "1a3e82ca8143b60c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox302_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 34,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox302_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox302_4",
+        "id": "1a3e82ca8143b60d",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox302_5",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 35,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox302_5",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox302_5",
+        "id": "1a3e82ca8143b60e",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox303_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 36,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox303_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox303_1",
+        "id": "1a3e82ca8143b800",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox303_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 37,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox303_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox303_2",
+        "id": "1a3e82ca8143b801",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox303_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 38,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox303_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox303_3",
+        "id": "1a3e82ca8143b802",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "V",
+        "is_system": false,
+        "en_field_name": "Ox303_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 39,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox303_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox303_4",
+        "id": "1a3e82ca8143b803",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox304_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 40,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 5,
+        "is_write": false,
+        "field_name": "Ox304_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox304_1",
+        "id": "1a3e82ca8143b804",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox304_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 41,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 5,
+        "is_write": false,
+        "field_name": "Ox304_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox304_2",
+        "id": "1a3e82ca8143b805",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox305_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 42,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 5,
+        "is_write": false,
+        "field_name": "Ox305_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox305_1",
+        "id": "1a3e82ca8143b806",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox305_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 43,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 5,
+        "is_write": false,
+        "field_name": "Ox305_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox305_2",
+        "id": "1a3e82ca8143b807",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox306_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 44,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox306_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox306_1",
+        "id": "1a3e82ca8143ba00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox306_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 45,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox306_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox306_2",
+        "id": "1a3e82ca8143ba01",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox306_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 46,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox306_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox306_3",
+        "id": "1a3e82ca8143ba02",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox306_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 47,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox306_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox306_4",
+        "id": "1a3e82ca8143ba03",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox306_5",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 48,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox306_5",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox306_5",
+        "id": "1a3e82ca8143ba04",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox306_6",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 49,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox306_6",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox306_6",
+        "id": "1a3e82ca8143ba05",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox307_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 50,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox307_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox307_1",
+        "id": "1a3e82ca8143ba06",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox307_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 51,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox307_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox307_2",
+        "id": "1a3e82ca8143ba07",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox307_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 52,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox307_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox307_3",
+        "id": "1a3e82ca8143ba08",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox307_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 53,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox307_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox307_4",
+        "id": "1a3e82ca8143ba09",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox308_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 54,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox308_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox308_1",
+        "id": "1a3e82ca8143ba0a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox308_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 55,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox308_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox308_2",
+        "id": "1a3e82ca8143ba0b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox308_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 56,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox308_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox308_3",
+        "id": "1a3e82ca8143ba0c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox308_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 57,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Ox308_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox308_4",
+        "id": "1a3e82ca8143bc00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox320_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 58,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox320_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox320_1",
+        "id": "1a3e82ca8143bc01",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox320_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 59,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox320_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox320_2",
+        "id": "1a3e82ca8143bc02",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox320_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 60,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox320_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox320_3",
+        "id": "1a3e82ca8143bc03",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox320_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 61,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox320_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox320_4",
+        "id": "1a3e82ca8143bc04",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": " ℃",
+        "is_system": false,
+        "en_field_name": "Ox321_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 62,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox321_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox321_1",
+        "id": "1a3e82ca8143bc05",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": " ℃",
+        "is_system": false,
+        "en_field_name": "Ox321_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 63,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox321_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox321_2",
+        "id": "1a3e82ca8143bc06",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox321_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 64,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox321_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox321_3",
+        "id": "1a3e82ca8143bc07",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox321_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 65,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox321_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox321_4",
+        "id": "1a3e82ca8143be00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox350_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 66,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox350_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox350_1",
+        "id": "1a3e82ca8143be01",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox350_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 67,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox350_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox350_2",
+        "id": "1a3e82ca8143be02",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox350_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 68,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox350_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox350_3",
+        "id": "1a3e82ca8143be03",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox350_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 69,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox350_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox350_4",
+        "id": "1a3e82ca8143be04",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox351_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 70,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox351_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox351_1",
+        "id": "1a3e82ca8143be05",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox351_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 71,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox351_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox351_2",
+        "id": "1a3e82ca8143be06",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox351_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 72,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox351_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox351_3",
+        "id": "1a3e82ca8143be07",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox351_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 73,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox351_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox351_4",
+        "id": "1a3e82ca8143be08",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox352_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 74,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox352_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox352_1",
+        "id": "1a3e82ca8143be09",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox352_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 75,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox352_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox352_2",
+        "id": "1a3e82ca8143be0a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox352_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 76,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox352_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox352_3",
+        "id": "1a3e82ca8143c000",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox352_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 77,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox352_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox352_4",
+        "id": "1a3e82ca8143c001",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox353_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 78,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox353_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox353_1",
+        "id": "1a3e82ca8143c002",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox353_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 79,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox353_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox353_2",
+        "id": "1a3e82ca8143c003",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox353_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 80,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox353_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox353_3",
+        "id": "1a3e82ca8143c004",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox353_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 81,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox353_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox353_4",
+        "id": "1a3e82ca8143c005",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox354_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 82,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox354_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox354_1",
+        "id": "1a3e82ca8143c006",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox364_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 83,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox364_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox364_2",
+        "id": "1a3e82ca8143c007",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox354_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 84,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox354_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox354_3",
+        "id": "1a3e82ca8143c008",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox354_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 85,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox354_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox354_4",
+        "id": "1a3e82ca8143c009",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox355_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 86,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox355_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox355_1",
+        "id": "1a3e82ca8143c00a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox355_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 87,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox355_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox355_2",
+        "id": "1a3e82ca8143c00b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox355_3",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 88,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox355_3",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox355_3",
+        "id": "1a3e82ca8143c00c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "mV",
+        "is_system": false,
+        "en_field_name": "Ox355_4",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 89,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "Ox355_4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox355_4",
+        "id": "1a3e82ca8143c00d",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox2A9_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 90,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2A9_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox2A9_1",
+        "id": "1a3e82ca8143c00e",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox2A9_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 91,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2A9_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox2A9_2",
+        "id": "1a3e82ca8143c00f",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox2AA_1",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 92,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2AA_1",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox2AA_1",
+        "id": "1a3e82ca8143c010",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "Ox2AA_2",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 93,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "Ox2AA_2",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox2AA_2",
+        "id": "1a3e82ca8143c011",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "latitude",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 94,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "latitude",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "TimePosition",
+        "id": "1a3e82ca8143c200",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "VehicleSerialNumber",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 95,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": true,
+        "field_name": "VehicleSerialNumber",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "VehicleSerialNumber",
+        "id": "1a3e82ca8143c201",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Hour",
+        "is_system": false,
+        "en_field_name": "VehicleWorkingTime",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 65535,
+        "index": 97,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "VehicleWorkingTime",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "VehicleWorkingTime",
+        "id": "1a3e82ca8143c202",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Hour",
+        "is_system": false,
+        "en_field_name": "BladeWorkingTime",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 65535,
+        "index": 98,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "BladeWorkingTime",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BladeWorkingTime",
+        "id": "1a3e82ca8143c203",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SupportLimpHomeMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 99,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "SupportLimpHomeMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SupportLimpHomeMode",
+        "id": "1a3e82ca8143c204",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "LimpHomeMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 100,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": true,
+        "field_name": "Ox1A4",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LimpHomeMode",
+        "id": "1a3e82ca8143c205",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "device_info",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 101,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "device_info",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "device_info",
+        "id": "1a3e82ca8143c206",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "$1002",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 102,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": true,
+        "field_name": "$1002",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "$1002",
+        "id": "1a3e82ca8143c207",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "GPS_4G_module_version",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 103,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "GPS_4G_module_version",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "GPS_4G_module_version",
+        "id": "1a3e82ca8143c208",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatteryPackFaultCode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 104,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "BatteryPackFaultCode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatteryPackFaultCode",
+        "id": "1a3e82ca8143c209",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox1B6",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 105,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "Ox1B6",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox1B6",
+        "id": "1a3e82ca8143c20a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Ox225",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 106,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": true,
+        "field_name": "Ox225",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Ox225",
+        "id": "1a3e82ca8143c20b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU1_1Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 107,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU1_1Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU1_1Voltage",
+        "id": "1a3e82ca8143c20c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU1_2Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 108,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU1_2Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU1_2Voltage",
+        "id": "1a3e82ca8143c20d",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU1BusTemperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 109,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU1BusTemperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU1BusTemperature",
+        "id": "1a3e82ca8143c20e",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU1ErrorCode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 110,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MultibatteryPMU1ErrorCode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU1ErrorCode",
+        "id": "1a3e82ca8143c20f",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU2_1Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 111,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU2_1Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU2_1Voltage",
+        "id": "1a3e82ca8143c210",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU2_2Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 112,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU2_2Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU2_2Voltage",
+        "id": "1a3e82ca8143c211",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU2BusTemperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 113,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU2BusTemperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU2BusTemperature",
+        "id": "1a3e82ca8143c400",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultiBatteryPMU2ErrorCode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 114,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MultiBatteryPMU2ErrorCode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultiBatteryPMU2ErrorCode",
+        "id": "1a3e82ca8143c401",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU3_1Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 115,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU3_1Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU3_1Voltage",
+        "id": "1a3e82ca8143c402",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU3_2Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 116,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU3_2Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU3_2Voltage",
+        "id": "1a3e82ca8143c403",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU3BusTemperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 117,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU3BusTemperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU3BusTemperature",
+        "id": "1a3e82ca8143c404",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU3ErrorCode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 118,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MultibatteryPMU3ErrorCode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU3ErrorCode",
+        "id": "1a3e82ca8143c405",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU1AvailableCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 119,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU1AvailableCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU1AvailableCurrent",
+        "id": "1a3e82ca8143c406",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU1_1Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 120,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU1_1Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU1_1Current",
+        "id": "1a3e82ca8143c407",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU1_2Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 121,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU1_2Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU1_2Current",
+        "id": "1a3e82ca8143c408",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU1Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 122,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU1Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU1Current",
+        "id": "1a3e82ca8143c409",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU2AvailableCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 123,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU2AvailableCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU2AvailableCurrent",
+        "id": "1a3e82ca8143c40a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU2_1Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 124,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU2_1Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU2_1Current",
+        "id": "1a3e82ca8143c40b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU2_2Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 125,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU2_2Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU2_2Current",
+        "id": "1a3e82ca8143c40c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU2Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 126,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU2Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU2Current",
+        "id": "1a3e82ca8143c40d",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU3AvailableCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 127,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MultibatteryPMU3AvailableCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU3AvailableCurrent",
+        "id": "1a3e82ca8143c40e",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU3_1Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 128,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU3_1Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU3_1Current",
+        "id": "1a3e82ca8143c40f",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU3_2Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 129,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU3_2Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU3_2Current",
+        "id": "1a3e82ca8143c410",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MultibatteryPMU3Current",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 130,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MultibatteryPMU3Current",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MultibatteryPMU3Current",
+        "id": "1a3e82ca8143c411",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUWorkingMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 131,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUWorkingMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUWorkingMode",
+        "id": "1a3e82ca8143c412",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUFailureMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 132,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUFailureMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUFailureMode",
+        "id": "1a3e82ca8143c600",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUAvailableBatteryPacks",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 133,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "MP6_PMUAvailableBatteryPacks",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUAvailableBatteryPacks",
+        "id": "1a3e82ca8143c601",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUTemperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 134,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUTemperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUTemperature",
+        "id": "1a3e82ca8143c602",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBusVoltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 135,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": true,
+        "field_name": "MP6_PMUBusVoltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBusVoltage",
+        "id": "1a3e82ca8143c603",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1 A",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBusCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 136,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBusCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBusCurrent",
+        "id": "1a3e82ca8143c604",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUFaultCode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 137,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUFaultCode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUFaultCode",
+        "id": "1a3e82ca8143c605",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery1FailureMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 138,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery1FailureMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery1FailureMode",
+        "id": "1a3e82ca8143c606",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery1WorkingMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 139,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery1WorkingMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery1WorkingMode",
+        "id": "1a3e82ca8143c607",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1V",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery1Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 140,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery1Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery1Voltage",
+        "id": "1a3e82ca8143c608",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1A",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery1DischargeCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 141,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery1DischargeCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery1DischargeCurrent",
+        "id": "1a3e82ca8143c609",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery1SOC",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 142,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery1SOC",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery1SOC",
+        "id": "1a3e82ca8143c60a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1℃",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery1Temperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 143,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery1Temperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery1Temperature",
+        "id": "1a3e82ca8143c60b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery2FailureMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 144,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery2FailureMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery2FailureMode",
+        "id": "1a3e82ca8143c60c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery2WorkingMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 145,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery2WorkingMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery2WorkingMode",
+        "id": "1a3e82ca8143c60d",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery2Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 146,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery2Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery2Voltage",
+        "id": "1a3e82ca8143c60e",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1A",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery2DischargeCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 147,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery2DischargeCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery2DischargeCurrent",
+        "id": "1a3e82ca8143c60f",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery2SOC",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 148,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery2SOC",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery2SOC",
+        "id": "1a3e82ca8143c610",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery2Temperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 149,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery2Temperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery2Temperature",
+        "id": "1a3e82ca8143c800",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery3FailureMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 150,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery3FailureMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery3FailureMode",
+        "id": "1a3e82ca8143c801",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery3WorkingMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 151,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery3WorkingMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery3WorkingMode",
+        "id": "1a3e82ca8143c802",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery3Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 152,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery3Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery3Voltage",
+        "id": "1a3e82ca8143c803",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1A",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery3DischargeCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 153,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery3DischargeCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery3DischargeCurrent",
+        "id": "1a3e82ca8143c804",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery3SOC",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 154,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery3SOC",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery3SOC",
+        "id": "1a3e82ca8143c805",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1℃",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery3Temperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 155,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery3Temperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery3Temperature",
+        "id": "1a3e82ca8143c806",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery4FailureMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 156,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery4FailureMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery4FailureMode",
+        "id": "1a3e82ca8143c807",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery4WorkingMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 157,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery4WorkingMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery4WorkingMode",
+        "id": "1a3e82ca8143c808",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1V",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery4Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 158,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery4Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery4Voltage",
+        "id": "1a3e82ca8143c809",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1A",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery4DischargeCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 159,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery4DischargeCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery4DischargeCurrent",
+        "id": "1a3e82ca8143c80a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery4SOC",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 160,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery4SOC",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery4SOC",
+        "id": "1a3e82ca8143ca00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1℃",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery4Temperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 161,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery4Temperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery4Temperature",
+        "id": "1a3e82ca8143ca01",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery6FailureMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 162,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery6FailureMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery6FailureMode",
+        "id": "1a3e82ca8143ca02",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery5WorkingMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 163,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": true,
+        "field_name": "MP6_PMUBattery5WorkingMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery5WorkingMode",
+        "id": "1a3e82ca8143ca03",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1V",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery5Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 164,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery5Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery5Voltage",
+        "id": "1a3e82ca8143ca04",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1A",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery5DischargeCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 165,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery5DischargeCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery5DischargeCurrent",
+        "id": "1a3e82ca8143ca05",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery5SOC",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 166,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": true,
+        "field_name": "MP6_PMUBattery5SOC",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery5SOC",
+        "id": "1a3e82ca8143ca06",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1℃",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery5Temperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 167,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery5Temperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery5Temperature",
+        "id": "1a3e82ca8143ca07",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMU6FailureMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 168,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "MP6_PMU6FailureMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMU6FailureMode",
+        "id": "1a3e82ca8143ca08",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery6WorkingMode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 169,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery6WorkingMode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery6WorkingMode",
+        "id": "1a3e82ca8143ca09",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1V",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery6Voltage",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 170,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery6Voltage",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery6Voltage",
+        "id": "1a3e82ca8143ca0a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery6DischargeCurrent",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 171,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery6DischargeCurrent",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery6DischargeCurrent",
+        "id": "1a3e82ca8143ca0b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery6SOC",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 172,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery6SOC",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery6SOC",
+        "id": "1a3e82ca8143ca0c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1℃",
+        "is_system": false,
+        "en_field_name": "MP6_PMUBattery6Temperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 173,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "MP6_PMUBattery6Temperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MP6_PMUBattery6Temperature",
+        "id": "1a3e82ca8143ca0d",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "VehicleErrorCode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 174,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "VehicleErrorCode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "VehicleErrorCode",
+        "id": "1a3e82ca8143ca0e",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SupportDisableStart",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 198,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "SupportDisableStart",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SupportDisableStart",
+        "id": "1a3e82ca8143cc00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "DisableStart",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 199,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": true,
+        "field_name": "DisableStart",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "DisableStart",
+        "id": "1a3e82ca8143cc01",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Geofence_information",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 200,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": true,
+        "field_name": "Geofence_information",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Geofence_information",
+        "id": "1a3e82ca8143cc02",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Geofence_alarm",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 201,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": true,
+        "field_name": "Geofence_alarm",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Geofence_alarm",
+        "id": "1a3e82ca8143cc03",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "schedule_information",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 202,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": true,
+        "field_name": "schedule_information",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "schedule_information",
+        "id": "1a3e82ca8143cc04",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Schedule_alarm",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 203,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": true,
+        "field_name": "Schedule_alarm",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Schedule_alarm",
+        "id": "1a3e82ca8143cc05",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Production_unix_timestamp",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 204,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 9,
+        "is_write": true,
+        "field_name": "Production_unix_timestamp",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "Production_unix_timestamp",
+        "id": "1a3e82ca8143cc06",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "information_level",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 207,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": true,
+        "field_name": "information_level",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "information_level",
+        "id": "1a3e82ca8143cc07",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Seconds",
+        "is_system": false,
+        "en_field_name": "GPS_Heartbeat",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 208,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 9,
+        "is_write": true,
+        "field_name": "GPS_Heartbeat",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "GPS_Heartbeat",
+        "id": "1a3e82ca8143cc08",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "FOTA_progress",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 209,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 4,
+        "is_write": true,
+        "field_name": "FOTA_progress",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "FOTA_progress",
+        "id": "1a3e82ca8143cc09",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "minute",
+        "is_system": false,
+        "en_field_name": "EstimatedFullyChargedTime",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 210,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": false,
+        "field_name": "EstimatedFullyChargedTime",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "EstimatedFullyChargedTime",
+        "id": "1a3e82ca8143cc0a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "ChargerErrorCode",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 211,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "ChargerErrorCode",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "ChargerErrorCode",
+        "id": "1a3e82ca8143cc0b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "PINSecurityEnabled",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 212,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": true,
+        "field_name": "PINSecurityEnabled",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "PINSecurityEnabled",
+        "id": "1a3e82ca8143cc0c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "Hour",
+        "is_system": false,
+        "en_field_name": "BladesUsageTime",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 213,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 9,
+        "is_write": false,
+        "field_name": "BladesUsageTime",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BladesUsageTime",
+        "id": "1a3e82ca8143ce00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "ETOSwitchStatus",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 214,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "ETOSwitchStatus",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "ETOSwitchStatus",
+        "id": "1a3e82ca8143ce01",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SecondLeftBladeControllerError",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 215,
+        "description": "Second Left Blade Controller Error",
+        "en_description": "Second Left Blade Controller Error",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "SecondLeftBladeControllerError",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SecondLeftBladeControllerError",
+        "id": "1a3e82ca8143ce02",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "AttachmentControllerError",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 216,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "AttachmentControllerError",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "AttachmentControllerError",
+        "id": "1a3e82ca8143ce03",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SecondRightBladeControllerError",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 217,
+        "description": "SecondRightBladeControllerError",
+        "en_description": "SecondRightBladeControllerError",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "SecondRightBladeControllerError",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SecondRightBladeControllerError",
+        "id": "1a3e82ca8143ce04",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "CurrentCuttingSessionInfo",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 218,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "CurrentCuttingSessionInfo",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "CurrentCuttingSessionInfo",
+        "id": "1a3e82ca8143ce05",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "PMU_BatteryOverTemperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 219,
+        "description": "Indicate the battery over-temperature status reported by power management unit. The binary values from 0 to 63 indicate which battery is overheated",
+        "en_description": "Indicate the battery over-temperature status reported by power management unit. The binary values from 0 to 63 indicate which battery is overheated",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": true,
+        "field_name": "PMU_BatteryOverTemperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "PMU_BatteryOverTemperature",
+        "id": "1a3e82ca8143ce06",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "0.1h",
+        "is_system": false,
+        "en_field_name": "RemainingDischargeTime",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 220,
+        "description": "Indicate the remaining discharge time. After confirmation, this time can be regarded as the remaining cutting time",
+        "en_description": "Indicate the remaining discharge time. After confirmation, this time can be regarded as the remaining cutting time",
+        "default_value": "",
+        "source": 1,
+        "type": 8,
+        "is_write": true,
+        "field_name": "RemainingDischargeTime",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "RemainingDischargeTime",
+        "id": "1a3e82ca8143ce07",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatterySoH",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 221,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "BatterySoH",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatterySoH",
+        "id": "1a3e82ca8143ce08",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "ChargeState",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 255,
+        "index": 222,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "ChargeState",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "ChargeState",
+        "id": "1a3e82ca8143ce09",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "DisableStartActivated",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 223,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "DisableStartActivated",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "DisableStartActivated",
+        "id": "1a3e82ca8143ce0a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SupportGeofence",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 224,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "SupportGeofence",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SupportGeofence",
+        "id": "1a3e82ca8143ce0b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SupportSchedule",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 225,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "SupportSchedule",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SupportSchedule",
+        "id": "1a3e82ca8143ce0c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatterySerialNumber",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 226,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "BatterySerialNumber",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatterySerialNumber",
+        "id": "1a3e82ca8143ce0d",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatteryPackSoftwareVersion",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 227,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "BatteryPackSoftwareVersion",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatteryPackSoftwareVersion",
+        "id": "1a3e82ca8143ce0e",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatteryPackHardwareVersion",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 228,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "BatteryPackHardwareVersion",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatteryPackHardwareVersion",
+        "id": "1a3e82ca8143ce0f",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "DCChargingGunPositiveTemperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 229,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "DCChargingGunPositiveTemperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "DCChargingGunPositiveTemperature",
+        "id": "1a3e82ca8143ce10",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "℃",
+        "is_system": false,
+        "en_field_name": "DCChargingGunNegativeTemperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 230,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "DCChargingGunNegativeTemperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "DCChargingGunNegativeTemperature",
+        "id": "1a3e82ca8143ce11",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatteryFailureLevel",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 231,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "BatteryFailureLevel",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatteryFailureLevel",
+        "id": "1a3e82ca8143d000",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatteryTemperature",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 232,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 3,
+        "is_write": false,
+        "field_name": "BatteryTemperature",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatteryTemperature",
+        "id": "1a3e82ca8143d001",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "DriveSpeedLevel",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 233,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "DriveSpeedLevel",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "DriveSpeedLevel",
+        "id": "1a3e82ca8143d002",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BladeSpeedLevel",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 234,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "BladeSpeedLevel",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BladeSpeedLevel",
+        "id": "1a3e82ca8143d003",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "LightSwtichStatus",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 235,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "LightSwtichStatus",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LightSwtichStatus",
+        "id": "1a3e82ca8143d004",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "AlarmLightSwtich",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 236,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "AlarmLightSwtich",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "AlarmLightSwtich",
+        "id": "1a3e82ca8143d005",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "PINSecuritySetResult",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 237,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": true,
+        "field_name": "PINSecuritySetResult",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "PINSecuritySetResult",
+        "id": "1a3e82ca8143d006",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SlipSwitchStatus",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 238,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": true,
+        "field_name": "SlipSwitchStatus",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SlipSwitchStatus",
+        "id": "1a3e82ca8143d007",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MasterWheelCtrlFailureLevel",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 239,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MasterWheelCtrlFailureLevel",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MasterWheelCtrlFailureLevel",
+        "id": "1a3e82ca8143d008",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SlaveWheelControllerFailureLevel",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 240,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "SlaveWheelControllerFailureLevel",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SlaveWheelControllerFailureLevel",
+        "id": "1a3e82ca8143d009",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "MasterWheelMotorFailureLevel",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 241,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "MasterWheelMotorFailureLevel",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "MasterWheelMotorFailureLevel",
+        "id": "1a3e82ca8143d00a",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "SlaveWheelMotorFailureLevel",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 242,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": true,
+        "field_name": "SlaveWheelMotorFailureLevel",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "SlaveWheelMotorFailureLevel",
+        "id": "1a3e82ca8143d00b",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "DrivingTripInfo",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 243,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "DrivingTripInfo",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "DrivingTripInfo",
+        "id": "1a3e82ca8143d00c",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatteryHeatingState",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 244,
+        "description": "Indicates the battery heating state\nTrue – heating state on\nFalse – heating state off\n",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": true,
+        "field_name": "BatteryHeatingState",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatteryHeatingState",
+        "id": "1a3e82ca83cae000",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "DriveControllerSoftwareVersion",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 245,
+        "description": "Indicates the Drive Controller Software Version",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "DriveControllerSoftwareVersion",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "DriveControllerSoftwareVersion",
+        "id": "1a3e82ca83cc5a00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "BatteryPMUSoftwareVersion",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 246,
+        "description": "Indicates the Battery PMU Software Version",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "BatteryPMUSoftwareVersion",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "BatteryPMUSoftwareVersion",
+        "id": "1a3e82ca83cc9c00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "%",
+        "is_system": false,
+        "en_field_name": "PotentiometerPositioning",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 247,
+        "description": "Indicates the Potentiometer Positioning\nFormat: Left,Right\ne.g.: 30,40\nthe value is percentage of the potentiometer positioning",
+        "en_description": "Indicates the Potentiometer Positioning\nFormat: Left,Right\ne.g.: 30,40\nthe value is percentage of the potentiometer positioning",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "PotentiometerPositioning",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "PotentiometerPositioning",
+        "id": "1a3e82ca83d16400",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "ManualIntervalUpdate",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 248,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 7,
+        "is_write": true,
+        "field_name": "ManualIntervalUpdate",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "ManualIntervalUpdate",
+        "id": "1a3e82ca83d22000",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "LimpHomeModeActivated",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 249,
+        "description": "Indicate the vehicle really executes the limp home command. If limp home(datapoint 100 LimpHomeMode) is false, this datapoint should be reset to false.",
+        "en_description": "Indicate the vehicle really executes the limp home command. If limp home(datapoint 100 LimpHomeMode) is false, this datapoint should be reset to false.",
+        "default_value": "",
+        "source": 1,
+        "type": 1,
+        "is_write": false,
+        "field_name": "LimpHomeModeActivated",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "LimpHomeModeActivated",
+        "id": "1a3e82ca83d27c00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Device Components Versions",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 0,
+        "index": 250,
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 6,
+        "is_write": false,
+        "field_name": "DeviceComponentsVersions",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "DeviceComponentsVersions",
+        "id": "1a3e82cc31f81800",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Admin PIN",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 251,
+        "description": "",
+        "en_description": "",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": true,
+        "field_name": "AdminPIN",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "AdminPIN",
+        "id": "1a3e82cc31f96e00",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Vehicle Status",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 100,
+        "index": 252,
+        "description": "Parked (0) -> ( no moving, blade off )\nDriving (1) -> ( moving, blade off )\nCutting(2) ->  ( blade on )\nPowerOff(3) ->  ( This includes manual shutdown or shutdown caused by charging directly with a charger while the device is turned on )",
+        "en_description": "Parked (0) -> ( no moving, blade off )\nDriving (1) -> ( moving, blade off )\nCutting(2) ->  ( blade on )\nPowerOff(3) ->  ( This includes manual shutdown or shutdown caused by charging directly with a charger while the device is turned on )",
+        "default_value": "",
+        "source": 1,
+        "type": 2,
+        "is_write": false,
+        "field_name": "Vehicle Status",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "VehicleStatus",
+        "id": "1a3e82cdd9a3c200",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    },
+    {
+        "symbol": "",
+        "is_system": false,
+        "en_field_name": "Total Power Consumption",
+        "ui_visible": {
+            "control": true,
+            "state": true
+        },
+        "max": 4294967295,
+        "index": 253,
+        "description": "Vehicle’s Total Power Consumption.\n\nUnit: Wh",
+        "en_description": "Vehicle’s Total Power Consumption.\n\nUnit: Wh",
+        "default_value": "",
+        "source": 1,
+        "type": 9,
+        "is_write": false,
+        "field_name": "Total Power Consumption",
+        "is_read": true,
+        "is_collect": false,
+        "min": 0,
+        "name": "TotalPowerConsumption",
+        "id": "1a3e82cdd9a45200",
+        "permission_list": [
+            4
+        ],
+        "value_description": {}
+    }
+]
