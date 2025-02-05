@@ -7,6 +7,8 @@ import threading
 from datetime import datetime, timedelta
 from xlink_vehicle import XlinkVehicle
 
+# ----- 配置列表 start -----
+
 xlink_api = "https://dev6-xlink.globetools.com:444"
 # xlink_api = "https://dev7-xlink.globe-groups.com:444"
 xlink_access_key_id = "323e82c6f68cf800"
@@ -16,11 +18,40 @@ host = "cantonrlmudp.globetools.com"
 port = 1883
 product_id = "163e82bac7ca1f41163e82bac7ca9001"
 product_key = "78348f781e99ced28bbbbfa73fc3c3ec"
-model = ("CZ60R24X", "CZ52R24X", "CZ32S8X", "CZ60R18X")
-max_number = 100
-timeout = 3600 * 1
-online_devices = dict()
+model = ("CZ60R24X", "CZ52R24X", "CZ32S8X", "CZ60R18X")  # 不指定model时随机选取的model列表
+max_number = 10  # 最大模拟数量
+timeout = 3600 * 0.1  # 执行时间
+min_sleep_time = 0.5  # 使用随机数据时的最小发送间隔
+max_sleep_time = 1  # 使用随机数据时的最大发送间隔
+use_real_data = False  # 使用真实数据进行回放还是使用随机数据进行模拟
+csv_file_path = r"D:\ShareCache\王歆\working\task\dataV\stihl 真车数据 956002678-0922-1006.csv"  # 回放操作需要的真车csv
+# 请在下列3种车辆获取方式中选一种进行模拟
+# 1. 直接指定车辆进行数据上报
+device_data = {
+    'list': [
+        {"device":
+            {
+                'id': 851909796,
+                'model': 'CRZ42823',
+                'is_online': True,
+                'mac': '0967706050009522',
+                'sn': '3012209290000322'
+            }
+        },
+    ]}
 
+# 2. 从xlink获取离线车辆进行数据上报，车辆数量上限为max_number
+# device_data = get_offline_vehicle(product_id)
+
+
+# 3. 从指定的json文件中获取车辆进行数据上报
+# with open('dev6.json', 'r') as file:
+#     device_data = json.load(file)
+
+# ----- 配置列表 end -----
+
+
+online_devices = dict()
 type_mapping = {
         2: 0,
         3: 1,
@@ -31,7 +62,7 @@ type_mapping = {
         9: 4,
         4: 3,
         7: "A",
-    }
+}
 
 def get_dp_type_dict(dp_type_json="vehicle_dp.json"):
     _dp_type_dict = dict()
@@ -184,7 +215,7 @@ def mock_devices(id, device_id, device_mac, device_sn, device_model, timeout=60)
     while time.time() - start_time < timeout:
         # 随机选择一些DP上报
         client.publish_multiple_datapoint_to_xlink(get_random_dp_list(dp_list, dp218=dp218))
-        time.sleep(random.uniform(3, 10))
+        time.sleep(random.uniform(min_sleep_time, max_sleep_time))
         count += 1
 
     dp218 = {"index": 218, "type": 9, "value": f"{session_id},2000,240,32,0"}
@@ -280,34 +311,6 @@ def report_real_vehicle_dp(id, device_id, device_mac, device_sn, device_model, c
 
 if __name__ == '__main__':
 
-    device_data = {'v': 2, 'count': 1, 'list': [
-        {"device":
-            {
-                'id': 1144504099,
-                'model': 'CZ60R24X',
-                'is_online': True,
-                'mac': '0867706050009236',
-                'sn': 'GWA0190006'
-            }
-        },
-        # {"device":
-        #     {
-        #         'id': 851906159,
-        #         'model': 'CZ60R24X',
-        #         'is_online': True,
-        #         'mac': '0864081067486394',
-        #         'sn': '1012408209000007'
-        #     }
-        # },
-    ]}
-
-    # device_data = get_offline_vehicle(product_id)
-
-    # with open('dev6.json', 'r') as file:
-    #     device_data = json.load(file)
-
-    csv_file_path = r"D:\ShareCache\王歆\working\task\dataV\stihl 真车数据 956002678-0922-1006.csv"
-
     threads = []
     i = 0
     for l in device_data["list"]:
@@ -320,7 +323,7 @@ if __name__ == '__main__':
         print(f"{i}\t{device_id=}, {device_mac=}, {device_sn=}, {device_model=}")
 
         # 创建线程来执行 device_online()
-        if csv_file_path:
+        if use_real_data and csv_file_path:
             _func = report_real_vehicle_dp
             _args = (i, device_id, device_mac, device_sn, device_model, csv_file_path, 10)
         else:

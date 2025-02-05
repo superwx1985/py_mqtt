@@ -11,14 +11,14 @@ from logger_config import get_logger, TextHandler
 
 broker = {
     "DEV6": {"host": "cantonrlmudp.globetools.com", "port": 1883,
-             "username": "163e82bac7ca1f41163e82bac7ca9001",
-             "password": "78348f781e99ced28bbbbfa73fc3c3ec"},
+             "product_id": "163e82bac7ca1f41163e82bac7ca9001",
+             "product_key": "78348f781e99ced28bbbbfa73fc3c3ec"},
     "DEV9": {"host": "dev9-xlink-mqtt.globe-groups.com", "port": 1883,
-             "username": "163e82ca81421f41163e82ca81427001",
-             "password": "3709185dfdf50d9563eedceadbccb3d3"},
+             "product_id": "163e82ca81421f41163e82ca81427001",
+             "product_key": "3709185dfdf50d9563eedceadbccb3d3"},
     "DEV7": {"host": "dev7mqtt.globe-groups.com", "port": 1883,
-             "username": "163e82bac7ca1f41163e82bac7ca9001",
-             "password": "78348f781e99ced28bbbbfa73fc3c3ec"},
+             "product_id": "163e82bac7ca1f41163e82bac7ca9001",
+             "product_key": "78348f781e99ced28bbbbfa73fc3c3ec"},
 }
 
 
@@ -92,7 +92,7 @@ class MyApp(tk.Tk):
                 try:
                     env_id = self.env_combo.get()
                     self.xlink_vehicle = XlinkVehicle(broker[env_id]["host"], broker[env_id]["port"],
-                                                      broker[env_id]["username"], broker[env_id]["password"],
+                                                      broker[env_id]["product_id"], broker[env_id]["product_key"],
                                                       entries1["Device ID"].get(), entries1["Model"].get(), self.logger)
                     self.xlink_vehicle.connect_to_xlink()
                 except Exception as e:
