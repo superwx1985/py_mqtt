@@ -9,50 +9,56 @@ from xlink_vehicle import XlinkVehicle
 
 # ----- 配置列表 start -----
 
-xlink_api = "https://dev6-xlink.globetools.com:444"
-# xlink_api = "https://dev7-xlink.globe-groups.com:444"
-xlink_access_key_id = "323e82c6f68cf800"
-xlink_access_key_secret = "3a346b145aebe05f3e3a5178a7500f3d"
-host = "cantonrlmudp.globetools.com"
-# host = "dev7mqtt.globe-groups.com"
-port = 1883
-product_id = "163e82bac7ca1f41163e82bac7ca9001"
-product_key = "78348f781e99ced28bbbbfa73fc3c3ec"
-model = ("CZ60R24X", "CZ52R24X", "CZ32S8X", "CZ60R18X")  # 不指定model时随机选取的model列表
-max_number = 10  # 最大模拟数量
-timeout = 3600 * 0.1  # 执行时间
-min_sleep_time = 0.5  # 使用随机数据时的最小发送间隔
-max_sleep_time = 1  # 使用随机数据时的最大发送间隔
-use_real_data = False  # 使用真实数据进行回放还是使用随机数据进行模拟
-csv_file_path = r"D:\ShareCache\王歆\working\task\dataV\stihl 真车数据 956002678-0922-1006.csv"  # 回放操作需要的真车csv
+XLINK_API = "https://dev6-xlink.globetools.com:444"
+# XLINK_API = "https://dev7-xlink.globe-groups.com:444"
+XLINK_ACCESS_KEY_ID = "323e82c6f68cf800"
+XLINK_ACCESS_KEY_SECRET = "3a346b145aebe05f3e3a5178a7500f3d"
+MQTT_HOST = "cantonrlmudp.globetools.com"
+# MQTT_HOST = "dev7mqtt.globe-groups.com"
+MQTT_PORT = 1883
+PRODUCT_ID = "163e82bac7ca1f41163e82bac7ca9001"
+PRODUCT_KEY = "78348f781e99ced28bbbbfa73fc3c3ec"
+MODEL = ("CZ60R24X", "CZ52R24X", "CZ32S8X", "CZ60R18X")  # 不指定model时随机选取的model列表
+MAX_NUMBER = 2  # 最大模拟数量
+USE_REAL_DATA = True  # 使用真实数据进行回放还是使用随机数据进行模拟
+if USE_REAL_DATA:
+    # USE_REAL_DATA 为 True 时下面的设置才生效
+    CSV_FILE_PATH = r"D:\ShareCache\王歆\working\task\dataV\stihl 真车数据 956002678-0922-1006.csv"  # 回放操作需要的真车csv
+    ACCELERATE_RATE = 10  # 回放加速速率
+else:
+    # USE_REAL_DATA 为 False 时下面的设置才生效
+    TIMEOUT = 3600 * 1  # 执行时间
+    MIN_SLEEP_TIME = 0.5  # 使用随机数据时的最小发送间隔
+    MAX_SLEEP_TIME = 1  # 使用随机数据时的最大发送间隔
+
 # 请在下列3种车辆获取方式中选一种进行模拟
 # 1. 直接指定车辆进行数据上报
-device_data = {
-    'list': [
-        {"device":
-            {
-                'id': 851909796,
-                'model': 'CRZ42823',
-                'is_online': True,
-                'mac': '0967706050009522',
-                'sn': '3012209290000322'
-            }
-        },
-    ]}
+# DEVICE_DATA = {
+#     'list': [
+#         {"device":
+#             {
+#                 'id': 851909796,
+#                 'model': 'CRZ42823',
+#                 'is_online': True,
+#                 'mac': '0967706050009522',
+#                 'sn': '3012209290000322'
+#             }
+#         },
+#     ]}
 
 # 2. 从xlink获取离线车辆进行数据上报，车辆数量上限为max_number
-# device_data = get_offline_vehicle(product_id)
+# DEVICE_DATA = get_offline_vehicle(product_id)
 
 
 # 3. 从指定的json文件中获取车辆进行数据上报
-# with open('dev6.json', 'r') as file:
-#     device_data = json.load(file)
+with open('dev6.json', 'r') as file:
+    DEVICE_DATA = json.load(file)
 
 # ----- 配置列表 end -----
 
 
 online_devices = dict()
-type_mapping = {
+TYPE_MAPPING = {
         2: 0,
         3: 1,
         5: 7,
@@ -71,8 +77,8 @@ def get_dp_type_dict(dp_type_json="vehicle_dp.json"):
         for dp in dps:
             _dp_type_dict[dp["index"]] = dp["type"]
     for key in _dp_type_dict:
-        if _dp_type_dict[key] in type_mapping:
-            _dp_type_dict[key] = type_mapping[_dp_type_dict[key]]
+        if _dp_type_dict[key] in TYPE_MAPPING:
+            _dp_type_dict[key] = TYPE_MAPPING[_dp_type_dict[key]]
     return _dp_type_dict
 
 dp_type_dict = get_dp_type_dict()
@@ -116,11 +122,11 @@ def get_offline_vehicle(product_id):
         }
     }
 
-    secret = {"id": f"{xlink_access_key_id}", "secret": f"{xlink_access_key_secret}"}
-    response = requests.post(f'{xlink_api}/v2/accesskey_auth', json=secret)
+    secret = {"id": f"{XLINK_ACCESS_KEY_ID}", "secret": f"{XLINK_ACCESS_KEY_SECRET}"}
+    response = requests.post(f'{XLINK_API}/v2/accesskey_auth', json=secret)
     if response.status_code == 200:
         access_token = response.json().get("access_token")
-        response = requests.post(f'{xlink_api}/v2/product/{product_id}/devices', json=data,
+        response = requests.post(f'{XLINK_API}/v2/product/{product_id}/devices', json=data,
                                  headers={"Access-Token": f"{access_token}"})
         if response.status_code == 200:
             return response.json()  # 打印响应的 JSON 内容
@@ -204,7 +210,7 @@ def get_random_dp_list(_dp_list, dp218=None):
 
 
 def mock_devices(id, device_id, device_mac, device_sn, device_model, timeout=60):
-    client = XlinkVehicle(host, port, product_id, product_key, device_id, device_model)
+    client = XlinkVehicle(MQTT_HOST, MQTT_PORT, PRODUCT_ID, PRODUCT_KEY, device_id, device_model)
     client.connect_to_xlink()
     start_time = time.time()
 
@@ -215,7 +221,7 @@ def mock_devices(id, device_id, device_mac, device_sn, device_model, timeout=60)
     while time.time() - start_time < timeout:
         # 随机选择一些DP上报
         client.publish_multiple_datapoint_to_xlink(get_random_dp_list(dp_list, dp218=dp218))
-        time.sleep(random.uniform(min_sleep_time, max_sleep_time))
+        time.sleep(random.uniform(MIN_SLEEP_TIME, MAX_SLEEP_TIME))
         count += 1
 
     dp218 = {"index": 218, "type": 9, "value": f"{session_id},2000,240,32,0"}
@@ -225,7 +231,7 @@ def mock_devices(id, device_id, device_mac, device_sn, device_model, timeout=60)
 
 
 def report_real_vehicle_dp(id, device_id, device_mac, device_sn, device_model, csv_file_path, accelerate_rate=1):
-    client = XlinkVehicle(host, port, product_id, product_key, device_id, device_model)
+    client = XlinkVehicle(MQTT_HOST, MQTT_PORT, PRODUCT_ID, PRODUCT_KEY, device_id, device_model)
     client.connect_to_xlink()
 
     # 上报函数
@@ -313,28 +319,28 @@ if __name__ == '__main__':
 
     threads = []
     i = 0
-    for l in device_data["list"]:
+    for l in DEVICE_DATA["list"]:
         i += 1
         device = l["device"]
         device_id = device["id"]
         device_mac = device.get("mac") if device.get("mac") else "unknown"
         device_sn = device.get("sn") if device.get("sn") else "unknown"
-        device_model = device.get("model") if device.get("model") else random.choice(model)
+        device_model = device.get("model") if device.get("model") else random.choice(MODEL)
         print(f"{i}\t{device_id=}, {device_mac=}, {device_sn=}, {device_model=}")
 
         # 创建线程来执行 device_online()
-        if use_real_data and csv_file_path:
+        if USE_REAL_DATA and CSV_FILE_PATH:
             _func = report_real_vehicle_dp
-            _args = (i, device_id, device_mac, device_sn, device_model, csv_file_path, 10)
+            _args = (i, device_id, device_mac, device_sn, device_model, CSV_FILE_PATH, ACCELERATE_RATE)
         else:
             _func = mock_devices
-            _args = (i, device_id, device_mac, device_sn, device_model, timeout)
+            _args = (i, device_id, device_mac, device_sn, device_model, TIMEOUT)
         t = threading.Thread(target=_func, args=_args)
         t.start()
 
         # 将线程加入线程池列表
         threads.append(t)
-        if i >= max_number:
+        if i >= MAX_NUMBER:
             break
 
     # 等待所有线程完成
