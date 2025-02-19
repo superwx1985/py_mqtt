@@ -26,6 +26,7 @@ if USE_REAL_DATA:
     CSV_FILE_PATH = r"D:\ShareCache\王歆\working\task\dataV\stihl 真车数据 956002678-0922-1006.csv"  # 回放操作需要的真车csv
     ACCELERATE_RATE = 10  # 回放加速速率
 else:
+    CSV_FILE_PATH = None
     # USE_REAL_DATA 为 False 时下面的设置才生效
     TIMEOUT = 3600 * 1  # 执行时间
     MIN_SLEEP_TIME = 0.5  # 使用随机数据时的最小发送间隔
@@ -59,16 +60,17 @@ with open('dev6.json', 'r') as file:
 
 online_devices = dict()
 TYPE_MAPPING = {
-        2: 0,
-        3: 1,
-        5: 7,
-        8: 2,
-        6: 9,
-        1: 0,
-        9: 4,
-        4: 3,
-        7: "A",
+        2: 0,  # Byte或者BOOL
+        3: 1,  # Int16
+        5: 7,  # Float(IEEE754标准)
+        8: 2,  # Unsigned Int16
+        6: 9,  # String
+        1: 0,  # # Byte或者BOOL
+        9: 4,  # Unsigned Int32
+        4: 3,  # Int32
+        7: "A",  # Binary(二进制数据块)
 }
+
 
 def get_dp_type_dict(dp_type_json="vehicle_dp.json"):
     _dp_type_dict = dict()
@@ -81,7 +83,9 @@ def get_dp_type_dict(dp_type_json="vehicle_dp.json"):
             _dp_type_dict[key] = TYPE_MAPPING[_dp_type_dict[key]]
     return _dp_type_dict
 
+
 dp_type_dict = get_dp_type_dict()
+
 
 def get_random_datetime_str(start_date=datetime(2023, 1, 1), end_date=datetime(2025, 12, 31, 23, 59, 59)):
     # 计算时间范围内的总秒数

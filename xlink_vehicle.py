@@ -267,10 +267,17 @@ if __name__ == "__main__":
     client.connect_to_xlink()
     client.publish_error_to_xlink(104, "11")
 
-    t = bytes.fromhex(f"$h/{device_id}".encode().hex())
-    msg = mqtt.MQTTMessage(topic=t)
-    msg.payload = bytes.fromhex("0011000a000732c6fb310001b207")
-    client.on_message(None, None, msg)
+    dp_list = [
+        {"index": 103, "type": 9, "value": "GE25.1.4.0"},
+        {"index": 94, "type": 9, "value": "20240530070845,40.7128,-74.0060,20240503070937"},
+    ]
+    client.publish_multiple_datapoint_to_xlink(dp_list)
+
+    # t = bytes.fromhex(f"$h/{device_id}".encode().hex())
+    # msg = mqtt.MQTTMessage(topic=t)
+    # msg.payload = bytes.fromhex("0011000a000732c6fb310001b207")
+    # client.on_message(None, None, msg)
+
     for i in range(10):
         print(i)
         time.sleep(1)
