@@ -5,9 +5,9 @@ from tkinter import ttk
 from tkinter import scrolledtext
 from xlink_vehicle import XlinkVehicle
 from vehicle_payload import PayloadData
-from logger_config import get_logger, TextHandler
+from logger_config import get_logger, TextHandler, FORMATTER
 
-VERSION = 1.5
+VERSION = "1.5.2"
 
 BROKER = {
     "DEV6": {"host": "cantonrlmudp.globetools.com", "port": 1883,
@@ -65,11 +65,12 @@ class MyApp(tk.Tk):
             t.start()
 
         def create_label_entry_pair(root, label_text, default, row, column):
-            label = tk.Label(root, text=label_text)
+            label = ttk.Label(root, text=label_text)
             label.grid(row=row, column=column, padx=2, pady=2, sticky='e')
 
-            entry = tk.Entry(root, width=20)
-            entry.config(textvariable=tk.StringVar(value=default))
+            entry = ttk.Entry(root, width=20)
+            # entry.config(textvariable=tk.StringVar(value=default))
+            entry.insert(0, default)
             entry.grid(row=row, column=column + 2, padx=2, pady=2, sticky='w')
 
             return entry
@@ -103,7 +104,7 @@ class MyApp(tk.Tk):
         frame1.grid(row=i, column=0, sticky="e")
 
         # 创建环境下拉框
-        label = tk.Label(frame1, text="Environment")
+        label = ttk.Label(frame1, text="Environment")
         label.grid(row=0, column=1, padx=2, pady=2, sticky='e')
         self.env_combo = ttk.Combobox(left_frame, state="readonly")
         keys_tuple = tuple(BROKER.keys())
@@ -172,18 +173,19 @@ class MyApp(tk.Tk):
 
         # 创建error输入框
         def create_label_entry_button(root, index_text, label_text, default, row, column, key):
-            label = tk.Label(root, text=label_text)
+            label = ttk.Label(root, text=label_text)
             label.grid(row=row, column=column, padx=2, pady=2, sticky='w')
 
-            label = tk.Label(root, text=index_text)
+            label = ttk.Label(root, text=index_text)
             label.grid(row=row, column=column + 1, padx=2, pady=2, sticky='w')
 
-            entry = tk.Entry(root)
-            entry.config(textvariable=tk.StringVar(value=default))
+            entry = ttk.Entry(root)
+            # entry.config(textvariable=tk.StringVar(value=default))
+            entry.insert(0, default)
             entry.grid(row=row, column=column + 2, padx=2, pady=2, sticky='w')
 
             checkbox_var = tk.BooleanVar(value=True)
-            checkbox = tk.Checkbutton(root, text="", variable=checkbox_var)
+            checkbox = ttk.Checkbutton(root, text="", variable=checkbox_var)
             checkbox.grid(row=row, column=column + 3, padx=2, pady=2, sticky='w')
 
             button = ttk.Button(root, text="Set", command=lambda: async_call(set_error, key=key, value=entry.get(), is_hex=checkbox_var.get()), width=10)
@@ -249,15 +251,15 @@ class MyApp(tk.Tk):
         self.custom_type_combo.bind("<<ComboboxSelected>>", lambda event: on_combobox_change(row=custom_type_combo_row, column=2))
         self.custom_type_combo.grid(row=0, column=1, padx=2, pady=2, sticky='e')
 
-        self.custom_index_entry = tk.Entry(left_frame, width=4)
+        self.custom_index_entry = ttk.Entry(left_frame, width=4)
         self.custom_index_entry.config(textvariable=tk.StringVar(value="0"))
         self.custom_index_entry.grid(row=i, column=1, padx=2, pady=2, sticky='w')
 
-        self.custom_input_entry = tk.Entry(left_frame)
+        self.custom_input_entry = ttk.Entry(left_frame)
         self.custom_input_entry.config(textvariable=tk.StringVar(value="0"))
 
         self.custom_input_checkbox_var = tk.BooleanVar()
-        self.custom_input_checkbox = tk.Checkbutton(left_frame, text="", variable=self.custom_input_checkbox_var)
+        self.custom_input_checkbox = ttk.Checkbutton(left_frame, text="", variable=self.custom_input_checkbox_var)
 
         self.custom_input_combo = ttk.Combobox(left_frame, state="readonly")
         self.custom_input_combo['values'] = ('True', 'False')
@@ -352,8 +354,7 @@ class MyApp(tk.Tk):
         self.log_handler = TextHandler(self.log_widget)
 
         # 设置日志格式
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s: %(message)s')
-        self.log_handler.setFormatter(formatter)
+        self.log_handler.setFormatter(FORMATTER)
 
         # 获取根日志记录器并添加处理器
         logger = get_logger()
@@ -377,15 +378,15 @@ class MyApp(tk.Tk):
         self.loop_update_status()
 
     def _configure_styles(self):
-        self.style.configure('red',
-                             foreground='red.TButton',  # 文字颜色
+        self.style.configure('red.TButton',
+                             foreground='red',  # 文字颜色
                              # font=('Segoe UI', 10),  # 现代字体
                              # padding=6,  # 内边距优化
                              # relief='flat',  # 扁平化设计
                              # anchor='center'  # 文字对齐方式
                              )
-        self.style.configure('green',
-                             foreground='green.TButton',
+        self.style.configure('green.TButton',
+                             foreground='green',
                              )
 
     def update_status(self):
@@ -478,7 +479,7 @@ class PublishMultipleDatapointWindow(tk.Toplevel):
 
         # 显示错误信息
         ttk.Label(error_dialog, text=message).pack(padx=20, pady=10)
-        ttk.Button(error_dialog, text="确定",
+        ttk.Button(error_dialog, text="OK",
                    command=lambda: self._close_error(error_dialog)).pack(pady=5)
 
         # 设置关闭协议
@@ -500,11 +501,10 @@ class PublishMultipleDatapointWindow(tk.Toplevel):
         """创建表格头部"""
         header_frame = tk.Frame(self, bg="#F0F0F0")
         header_frame.pack(fill=tk.X, padx=10, pady=5)
-
-        headers = ["Index", "Type", "Value", "HEX", "Action"]
-        for col, text in enumerate(headers):
-            label = tk.Label(header_frame, text=text, bg="#F0F0F0", width=15 if col < 3 else 8)
-            label.grid(row=0, column=col, padx=2, pady=2)
+        cols = {"Index": 5, "Type": 15, "Value": 61, "HEX": 4, "Action": 10}
+        for i, k in enumerate(cols):
+            label = tk.Label(header_frame, text=k, bg="#F0F0F0", width=cols[k])
+            label.grid(row=0, column=i, padx=2, pady=2)
 
     def create_table(self):
         """创建可滚动表格区域"""
@@ -530,7 +530,7 @@ class PublishMultipleDatapointWindow(tk.Toplevel):
         btn_frame = tk.Frame(self)
         btn_frame.pack(pady=10)
 
-        ttk.Button(btn_frame, text="Add Row", command=self.add_row).grid(row=0, column=0, padx=5)
+        ttk.Button(btn_frame, text="Add", command=self.add_row).grid(row=0, column=0, padx=5)
         ttk.Button(btn_frame, text="Reset", command=self.clear_table, style="red.TButton").grid(row=0, column=1, padx=5)
         ttk.Button(btn_frame, text="Send", command=self.submit_data).grid(row=0, column=2, padx=5)
 
@@ -540,9 +540,9 @@ class PublishMultipleDatapointWindow(tk.Toplevel):
         row_frame.pack(fill=tk.X, pady=2)
 
         # 创建行组件
-        index_entry = ttk.Entry(row_frame, width=15)
-        type_combo = ttk.Combobox(row_frame, values=DATA_TYPES, width=15, state="readonly")
-        value_entry = ttk.Entry(row_frame, width=15)
+        index_entry = ttk.Entry(row_frame, width=5)
+        type_combo = ttk.Combobox(row_frame, width=15, values=DATA_TYPES, state="readonly")
+        value_entry = ttk.Entry(row_frame, width=60)
         hex_var = tk.BooleanVar()
         hex_check = ttk.Checkbutton(row_frame, variable=hex_var)
         delete_btn = ttk.Button(row_frame, text="Del", command=lambda: self.delete_row(row_frame))
@@ -566,7 +566,7 @@ class PublishMultipleDatapointWindow(tk.Toplevel):
         # 布局组件
         components = [index_entry, type_combo, value_entry, hex_check, delete_btn]
         for col, widget in enumerate(components):
-            widget.grid(row=0, column=col, padx=2, pady=2, sticky="ew")
+            widget.grid(row=0, column=col, padx=2, pady=2)
 
         # 存储行对象
         self.rows.append({
@@ -618,7 +618,7 @@ class PublishMultipleDatapointWindow(tk.Toplevel):
 
             # 调用发送函数
             self._send(self.parent.dp_list)
-            self.logger.info(f"{self.parent.dp_list} has been send.")
+            # self.logger.info(f"{self.parent.dp_list} has been send.")
             # messagebox.showinfo("Send Success", f"{result} has been send.")
 
     def _send(self, data):

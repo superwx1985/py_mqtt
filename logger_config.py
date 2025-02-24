@@ -1,6 +1,8 @@
 import logging
 import tkinter as tk
 
+FORMATTER = logging.Formatter(fmt='%(asctime)s > %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+
 
 def get_logger(logger_name=__name__):
     # 创建日志记录器
@@ -15,11 +17,8 @@ def get_logger(logger_name=__name__):
         console_handler = ColorHandler()
         console_handler.setLevel(logging.DEBUG)
 
-        # 创建日志格式器
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
-
         # 设置格式器到控制台处理器
-        console_handler.setFormatter(formatter)
+        console_handler.setFormatter(FORMATTER)
 
         # 将控制台处理器添加到日志记录器
         logger.addHandler(console_handler)
