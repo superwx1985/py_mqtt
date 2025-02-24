@@ -7,6 +7,7 @@ from xlink_vehicle import XlinkVehicle
 from vehicle_payload import PayloadData
 from logger_config import get_logger, TextHandler
 
+VERSION = 1.5
 
 BROKER = {
     "DEV6": {"host": "cantonrlmudp.globetools.com", "port": 1883,
@@ -82,7 +83,7 @@ class MyApp(tk.Tk):
             separator.grid(row=row, column=0, columnspan=columnspan, sticky='ew', pady=2)
 
         # 创建主窗口
-        self.title("GLOBE Vehicle DP Sender")
+        self.title(f"GLOBE Vehicle DP Sender V{VERSION}")
         # self.geometry("400x200")
 
         left_frame = tk.Frame(self)
